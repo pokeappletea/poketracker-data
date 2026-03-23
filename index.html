@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function(){
+  try {
+    var existing = localStorage.getItem('pt_v3');
+    var db = existing ? JSON.parse(existing) : {cards:[],sealed:[],packs:[],sales:[]};
+    if(!db.cards) db.cards = [];
+    if(!db.packs) db.packs = [];
+    if(!db.sales) db.sales = [];
+    if(!db.sealed) db.sealed = [];
+    // Merge seed data: add any item by ID that doesn't already exist,
+    // but NEVER overwrite items the user has already edited.
+    var seed = [{"id": 1774149036146, "name": "Stellar Crown - Squirtle #148 Slab - PSA 10", "type": "Slab - PSA 10", "set": "", "qty": 1.0, "price": 310.0, "date": "2026-03-22", "notes": ""}, {"id": 1774149036147, "name": "JP Magikarp Triplet Beat #080 Slab - PSA 10", "type": "Slab - PSA 10", "set": "", "qty": 1.0, "price": 178.5, "date": "2026-03-22", "notes": ""}, {"id": 1774149036149, "name": "Stain Glass Birds #SM210 Slab - PSA 10", "type": "Slab - PSA 10", "set": "", "qty": 1.0, "price": 330.0, "date": "2026-03-22", "notes": ""}, {"id": 1774149036150, "name": "Mcdonalds Set Raw", "type": "Raw", "set": "", "qty": 1.0, "price": 69.98, "date": "2026-03-22", "notes": ""}, {"id": 1774149036151, "name": "Team Rocket's Meowth 203/182 Sv10: Destined Rivals Holo Raw", "type": "Raw", "set": "", "qty": 1.0, "price": 31.0, "date": "2026-03-22", "notes": ""}, {"id": 1774149036152, "name": "[NM] Holo Dark Gyarados Celebrations 8/82 Pokemon TCG Raw", "type": "Raw", "set": "", "qty": 1.0, "price": 5.5, "date": "2026-03-22", "notes": ""}, {"id": 1774149036153, "name": "Gengar VMAX 157/264 Ultra Rare Holo NM Pokemon SWSH08: Fusion Strike Raw", "type": "Raw", "set": "", "qty": 1.0, "price": 56.0, "date": "2026-03-22", "notes": ""}, {"id": 1774149036154, "name": "1999 POKEMON JAPANESE GYM 2 #130 GIOVANNI'S GYARADOS-HOLO PSA 10", "type": "Slab - PSA", "set": "", "qty": 1.0, "price": 360.55, "date": "2026-03-22", "notes": ""}, {"id": 1774149036155, "name": "CGC 10 Japanese Tangela 178/165 151 2023 AR Pokemon Card TCG", "type": "Slab - CGC 10", "set": "", "qty": 1.0, "price": 10.0, "date": "2026-03-22", "notes": ""}, {"id": 1774149036156, "name": "2023 POKEMON PALDEA EVOLVED SPECIAL ILLUSTRATION RARE #258 SKELEDIRGE EX PSA 10", "type": "Slab - PSA 10", "set": "", "qty": 1.0, "price": 91.0, "date": "2026-03-22", "notes": ""}, {"id": 1774149036157, "name": "Mega Latias Ex Box", "type": "Box", "set": "Mega Evolutions", "qty": 6.0, "price": 24.87, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036158, "name": "SV10.5 Unova Mini Tin", "type": "Tins", "set": "", "qty": 9.0, "price": 12.87, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036159, "name": "ME01 Mega Evolutions ETB (Gardivoir)", "type": "ETB", "set": "", "qty": 1.0, "price": 49.99, "date": "2026-03-22", "notes": "Bestbuy MSRP"}, {"id": 1774149036160, "name": "ME01 Mega Evolutions ETB (Lucerio)", "type": "ETB", "set": "", "qty": 1.0, "price": 59.99, "date": "2026-03-22", "notes": "Dicks MSRP"}, {"id": 1774149036161, "name": "ME01 Mega Evolutions ETB (Lucerio)", "type": "ETB", "set": "", "qty": 1.0, "price": 49.99, "date": "2026-03-22", "notes": "Bestbuy MSRP"}, {"id": 1774149036162, "name": "Prismatic Costco ETB + Booster Bundle 2pk", "type": "ETB", "set": "", "qty": 1.0, "price": 59.99, "date": "2026-03-22", "notes": "Costco"}, {"id": 1774149036163, "name": "Prismatic Costco Tin Set", "type": "Tins", "set": "", "qty": 2.0, "price": 59.99, "date": "2026-03-22", "notes": "Costco"}, {"id": 1774149036164, "name": "Pokemon Fall Team Rockets Tin", "type": "Tins", "set": "", "qty": 2.0, "price": 31.99, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036165, "name": "Pokemon Trading Card Games Scarlet & Violet 8 Surging Sparks Booster Bundle", "type": "Booster Bundle", "set": "Surging Sparks", "qty": 2.0, "price": 34.99, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036166, "name": "Charizard Phantasmal Flames UPC", "type": "UPC", "set": "Phantasmal Flames", "qty": 14.0, "price": 118.83, "date": "2026-03-22", "notes": "WMT, Costco etc"}, {"id": 1774149036167, "name": "Scarlet & Violet Twilight Masquerade Elite Trainer Box", "type": "ETB", "set": "Twilight Masquerade", "qty": 1.0, "price": 59.24, "date": "2026-03-22", "notes": "Amzn + Danny"}, {"id": 1774149036168, "name": "ME02 Phantasmal Flames 3 Pack Blister", "type": "Blister", "set": "Phantasmal Flames", "qty": 4.0, "price": 15.87, "date": "2026-03-22", "notes": "Walmart Pending / 6 to Danny"}, {"id": 1774149036169, "name": "ME02 Phantasmal Flames Booster Bundle", "type": "Booster Bundle", "set": "Phantasmal Flames", "qty": 5.0, "price": 32.47, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036170, "name": "ME01 Mega Evolution Booster Bundle", "type": "Booster Bundle", "set": "", "qty": 1.0, "price": 32.5, "date": "2026-03-22", "notes": "Danny"}, {"id": 1774149036171, "name": "Scarlet & Violet 10.5 Black Bolt Elite Trainer Box", "type": "ETB", "set": "", "qty": 1.0, "price": 62.25, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036172, "name": "Scarlet & Violet 10.5 White Flare Elite Trainer Box", "type": "ETB", "set": "", "qty": 2.0, "price": 61.13, "date": "2026-03-22", "notes": "Danny+Walmart"}, {"id": 1774149036173, "name": "Scarlet & Violet Stellar Crown Pokemon Center ETB", "type": "ETB", "set": "Stellar Crown", "qty": 1.0, "price": 59.99, "date": "2026-03-22", "notes": "PKC"}, {"id": 1774149036174, "name": "ME03 Ascended Heroes Elite Trainer Box (PKC)", "type": "ETB", "set": "", "qty": 3.0, "price": 59.99, "date": "2026-03-22", "notes": "PKC - Preorder"}, {"id": 1774149036175, "name": "ME03 Ascended Heroes Elite Trainer Box", "type": "ETB", "set": "", "qty": 1.0, "price": 80.86, "date": "2026-03-22", "notes": "XPCollect"}, {"id": 1774149036176, "name": "ME03 Ascended Heroes Booster Bundle (6 Packs)", "type": "Booster Bundle", "set": "", "qty": 4.0, "price": 26.94, "date": "2026-03-22", "notes": "PKC"}, {"id": 1774149036177, "name": "Mega Evolution Sleeved Booster Pack (10 Cards)", "type": "Booster Pack", "set": "", "qty": 11.0, "price": 4.92, "date": "2026-03-22", "notes": "PKC + bnb"}, {"id": 1774149036178, "name": "Pokemon Salamence ex & Reshiram ex Premium Collection", "type": "Box", "set": "", "qty": 2.0, "price": 49.99, "date": "2026-03-22", "notes": "PoketexasTCG"}, {"id": 1774149036179, "name": "Mega Evolution Booster Box - Enhanced", "type": "Booster Box", "set": "", "qty": 3.0, "price": 235.9, "date": "2026-03-22", "notes": "PoketexasTCG/pfootball"}, {"id": 1774149036180, "name": "Destined Rivals Booster Box - SV10", "type": "Booster Box", "set": "Destined Rivals", "qty": 2.0, "price": 315.0, "date": "2026-03-22", "notes": "FB Mkt"}, {"id": 1774149036181, "name": "Stellar Crown Booster Box - SV07", "type": "Booster Box", "set": "Stellar Crown", "qty": 1.0, "price": 255.0, "date": "2026-03-22", "notes": "Ryan's Cardhouse Ebay"}, {"id": 1774149036182, "name": "Journey Together Booster Box - SV10", "type": "Booster Box", "set": "Journey Together", "qty": 3.0, "price": 252.26, "date": "2026-03-22", "notes": "Ryan's Cardhouse Ebay"}, {"id": 1774149036183, "name": "Surging Sparks Booster Box - SV08", "type": "Booster Box", "set": "Surging Sparks", "qty": 2.0, "price": 225.25, "date": "2026-03-22", "notes": "Ryan's+Ebay"}, {"id": 1774149036184, "name": "Phantasmal Flames Booster Box", "type": "Booster Box", "set": "Phantasmal Flames", "qty": 1.0, "price": 227.49, "date": "2026-03-22", "notes": "pfootball/PoketexasTCG"}, {"id": 1774149036185, "name": "Twilight Masquerade Booster Box", "type": "Booster Box", "set": "Twilight Masquerade", "qty": 1.0, "price": 318.0, "date": "2026-03-22", "notes": "Ryan's Cardhouse Ebay"}, {"id": 1774149036186, "name": "151 Booster Pack", "type": "Booster Pack", "set": "151", "qty": 4.0, "price": 12.5, "date": "2026-03-22", "notes": "Stream"}, {"id": 1774149036187, "name": "Paldean Fates Booster Pack", "type": "Booster Pack", "set": "Paldean Fates", "qty": 2.0, "price": 12.5, "date": "2026-03-22", "notes": "Stream"}, {"id": 1774149036188, "name": "Pokemon cards Pack mcdonalds 2021", "type": "Sealed", "set": "", "qty": 3.0, "price": 5.0, "date": "2026-03-22", "notes": "Stream"}, {"id": 1774149036189, "name": "Paldean Fates Booster Bundle (6 Packs)", "type": "Booster Bundle", "set": "Paldean Fates", "qty": 1.0, "price": 76.0, "date": "2026-03-22", "notes": "Stream"}, {"id": 1774149036190, "name": "Pokemon TCG: Tornadus, Thundurus & Landorus Cards with 2 Booster Packs & Coin", "type": "Blister Pack", "set": "", "qty": 2.0, "price": 9.99, "date": "2026-03-22", "notes": "PKC"}, {"id": 1774149036191, "name": "Mega Evo Mini Tins (Kangakhn + Venasaur)", "type": "Tins", "set": "", "qty": 5.0, "price": 11.87, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036192, "name": "Mega Evo Mini Tins", "type": "Tins", "set": "", "qty": 7.0, "price": 10.93, "date": "2026-03-22", "notes": "DG + Walmart"}, {"id": 1774149036193, "name": "Phantasmal Flames ETB", "type": "ETB", "set": "Phantasmal Flames", "qty": 1.0, "price": 79.99, "date": "2026-03-22", "notes": "PoketexasTCG"}, {"id": 1774149036194, "name": "Twilight Masquerade ETB Sealed Case (10X) 50% split w/ Danny", "type": "ETB", "set": "Twilight Masquerade", "qty": 0.5, "price": 560.0, "date": "2026-03-22", "notes": "pfootball"}, {"id": 1774149036195, "name": "Incineroar ex and Torterra ex Special Collection Box", "type": "Box", "set": "", "qty": 1.0, "price": 25.0, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036196, "name": "Lugia ex & Latias ex Premium Collection", "type": "Box", "set": "", "qty": 1.0, "price": 49.99, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036197, "name": "Archaludon ex & Reshiram ex", "type": "Box", "set": "", "qty": 1.0, "price": 34.99, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036198, "name": "Black Kyurem ex & Melmetal ex", "type": "Box", "set": "", "qty": 1.0, "price": 34.99, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036199, "name": "Paradox Destinies Iron Crown ex Tin", "type": "Tins", "set": "", "qty": 1.0, "price": 17.0, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036200, "name": "Legendary Warriors Premium Collection", "type": "Box", "set": "", "qty": 1.0, "price": 104.99, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036201, "name": "Prismatic Poster Collection", "type": "Box", "set": "", "qty": 2.0, "price": 20.0, "date": "2026-03-22", "notes": "pfootball"}, {"id": 1774149036202, "name": "Great Tusk Iron Threads Ex Premium Collection", "type": "Box", "set": "", "qty": 1.0, "price": 75.0, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036203, "name": "Shrouded Fables Booster Bundle", "type": "Booster Bundle", "set": "Shrouded Fables", "qty": 1.0, "price": 29.26, "date": "2026-03-22", "notes": "PKC"}, {"id": 1774149036204, "name": "Prismatic Evolutions Premium Figure Box", "type": "Box", "set": "Prismatic Evolutions", "qty": 2.0, "price": 86.66, "date": "2026-03-22", "notes": "Macy's/Poketexas"}, {"id": 1774149036205, "name": "Unova Heavy Hitters Box", "type": "Box", "set": "", "qty": 7.0, "price": 53.89, "date": "2026-03-22", "notes": "Costco"}, {"id": 1774149036206, "name": "Phantasmal Flames Booster Box Sealed Case", "type": "Booster Box", "set": "Phantasmal Flames", "qty": 1.0, "price": 1339.16, "date": "2026-03-22", "notes": "pfootball"}, {"id": 1774149036207, "name": "Prismatic Evolutions ETB", "type": "ETB", "set": "Prismatic Evolutions", "qty": 2.0, "price": 32.1, "date": "2026-03-22", "notes": "DG"}, {"id": 1774149036208, "name": "Prismatic Evolutions Tech Sticker Collection Glaceon", "type": "Blister", "set": "Prismatic Evolutions", "qty": 1.0, "price": 19.64, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036209, "name": "Prismatic Evolutions Tech Sticker Collection Glaceon", "type": "Blister", "set": "Prismatic Evolutions", "qty": 4.0, "price": 16.0, "date": "2026-03-22", "notes": "Dollar General"}, {"id": 1774149036210, "name": "Journey Together Sleeved Booster", "type": "Booster", "set": "Journey Together", "qty": 36.0, "price": 5.44, "date": "2026-03-22", "notes": "pfootball"}, {"id": 1774149036211, "name": "Destined Rivals Sleeved Booster", "type": "Booster", "set": "Destined Rivals", "qty": 42.0, "price": 6.31, "date": "2026-03-22", "notes": "FB marketplace, BB, PKC"}, {"id": 1774149036212, "name": "Prismatic Booster Bundle", "type": "Booster", "set": "Prismatic Evolutions", "qty": 9.0, "price": 34.9, "date": "2026-03-22", "notes": "Walmart, Target, PKC"}, {"id": 1774149036213, "name": "Stacking Tins (3 packs)", "type": "Tins", "set": "", "qty": 7.0, "price": 17.12, "date": "2026-03-22", "notes": "DG"}, {"id": 1774149036214, "name": "ME04 Perfect Order ETB (PKC)", "type": "ETB", "set": "", "qty": 2.0, "price": 59.99, "date": "2026-03-22", "notes": "PKC"}, {"id": 1774149036215, "name": "ME04 Perfect Order ETB", "type": "ETB", "set": "", "qty": 2.0, "price": 62.66, "date": "2026-03-22", "notes": "Forge&Fire"}, {"id": 1774149036216, "name": "ME04 Perfect Order Booster Box", "type": "Booster Box", "set": "", "qty": 2.0, "price": 170.82, "date": "2026-03-22", "notes": "PKC+Forge Fire"}, {"id": 1774149036217, "name": "ME04 Perfect Order Booster Bundle", "type": "Booster Bundle", "set": "", "qty": 2.0, "price": 26.94, "date": "2026-03-22", "notes": "PKC"}, {"id": 1774149036218, "name": "151 Booster Packs", "type": "Booster", "set": "151", "qty": 36.0, "price": 16.18, "date": "2026-03-22", "notes": "pfootball"}, {"id": 1774149036219, "name": "151 Mini Tin Display (10)", "type": "Tins", "set": "151", "qty": 1.0, "price": 354.66, "date": "2026-03-22", "notes": "Pfootballpete"}, {"id": 1774149036220, "name": "Charizard Phantasmal Flames UPC", "type": "UPC", "set": "Phantasmal Flames", "qty": 5.0, "price": 100.47, "date": "2026-03-22", "notes": "Costco"}, {"id": 1774149036221, "name": "Prismatic Tech Sticker (3pk)", "type": "Blister", "set": "Prismatic Evolutions", "qty": 3.0, "price": 25.01, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036222, "name": "Journey Together Sticker (3pk)", "type": "Blister", "set": "Journey Together", "qty": 3.0, "price": 16.19, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036223, "name": "Pokemon Day 2026 Collection", "type": "Box", "set": "", "qty": 12.0, "price": 17.75, "date": "2026-03-22", "notes": "XP, Target, Walmart"}, {"id": 1774149036224, "name": "Journey Together Three Booster Blister Yanmega (2) Scrafty (2)", "type": "Blister", "set": "Journey Together", "qty": 4.0, "price": 15.51, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036225, "name": "JT Booster Bundle", "type": "Booster", "set": "Journey Together", "qty": 5.0, "price": 32.61, "date": "2026-03-22", "notes": "WMT/PKC"}, {"id": 1774149036226, "name": "DR Booster Bundle", "type": "Booster", "set": "Destined Rivals", "qty": 4.0, "price": 38.07, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036227, "name": "Mega Zygarde ex Premium Collection", "type": "Box", "set": "", "qty": 3.0, "price": 45.0, "date": "2026-03-22", "notes": "PokeHive"}, {"id": 1774149036228, "name": "Prismatic Sams (Special Box + Booster Bundle)", "type": "Box", "set": "Prismatic Evolutions", "qty": 2.0, "price": 52.0, "date": "2026-03-22", "notes": "Sam's"}, {"id": 1774149036229, "name": "Mega/PFL 2 Pack Blister (Raikou) [3 Tab]", "type": "Blister", "set": "", "qty": 2.0, "price": 12.19, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036230, "name": "Mega/PFL 2 Pack Blister (Raikou) [1 Tab]", "type": "Blister", "set": "", "qty": 15.0, "price": 14.24, "date": "2026-03-22", "notes": "Walgreens"}, {"id": 1774149036231, "name": "Mega Charizard XY Tin", "type": "Tin", "set": "", "qty": 4.0, "price": 25.84, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036232, "name": "ME01 Mega Evolutions 3 Pack Blister", "type": "Blister", "set": "", "qty": 4.0, "price": 16.41, "date": "2026-03-22", "notes": "5 Below"}, {"id": 1774149036233, "name": "ME03 Ascended Heroes ETB", "type": "ETB", "set": "", "qty": 5.0, "price": 61.58, "date": "2026-03-22", "notes": "Target+Collector Cubby+Target"}, {"id": 1774149036234, "name": "ME03 Ascended Heroes ETB", "type": "ETB", "set": "", "qty": 2.5, "price": 65.33, "date": "2026-03-22", "notes": "Wmt"}, {"id": 1774149036235, "name": "ME03 Ascended Heroes Mini Tin", "type": "Tin", "set": "", "qty": 4.0, "price": 12.28, "date": "2026-03-22", "notes": ""}, {"id": 1774149036236, "name": "ME03 Ascended Heroes Tech sticker (3pack)", "type": "Blister", "set": "", "qty": 1.0, "price": 21.75, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036237, "name": "ME03 Ascended (Larry / Erika) (2pack)", "type": "Blister", "set": "", "qty": 4.0, "price": 12.5, "date": "2026-03-22", "notes": "Walgreens"}, {"id": 1774149036238, "name": "Astral Radiance Sleeves", "type": "Sleeves", "set": "Astral Radiance", "qty": 5.0, "price": 6.51, "date": "2026-03-22", "notes": "Stop/Shop"}, {"id": 1774149036239, "name": "Prismatic Tech Sticker (3pk)", "type": "Blister", "set": "Prismatic Evolutions", "qty": 2.0, "price": 22.78, "date": "2026-03-22", "notes": "Walmart (DK)"}, {"id": 1774149036240, "name": "ME03 Ascended Heroes Tech sticker (3pack)", "type": "Blister", "set": "", "qty": 1.0, "price": 21.75, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036241, "name": "ME03 Ascended (Larry / Erika) (2pack)", "type": "Blister", "set": "", "qty": 1.0, "price": 10.85, "date": "2026-03-22", "notes": "Target"}, {"id": 1774149036242, "name": "ME03 Ascended Heroes ETB Case", "type": "ETB", "set": "", "qty": 1.0, "price": 1203.0, "date": "2026-03-22", "notes": "pfootball"}, {"id": 1774149036243, "name": "Zard Tin", "type": "Tin", "set": "", "qty": 1.0, "price": 27.19, "date": "2026-03-22", "notes": "Walmart"}, {"id": 1774149036244, "name": "Pokeball Tins", "type": "Tins", "set": "", "qty": 3.0, "price": 80.0, "date": "2026-03-22", "notes": ""}, {"id": 1774149036245, "name": "Phantasmal Booster Bundle", "type": "Booster Bundle", "set": "Phantasmal Flames", "qty": 3.0, "price": 43.54, "date": "2026-03-22", "notes": "columbia"}, {"id": 1774149036246, "name": "DR Tins", "type": "Tins", "set": "Destined Rivals", "qty": 3.0, "price": 36.29, "date": "2026-03-22", "notes": "columbia"}];
+    var existingIds = {};
+    db.sealed.forEach(function(s){ existingIds[s.id] = true; });
+    seed.forEach(function(item){
+      if(!existingIds[item.id]) db.sealed.push(item);
+    });
+    // One-time field patches: fix specific items that had blank fields in the original seed
+    var patches = {1774149036157: {set: 'Mega Evolutions'}};
+    db.sealed.forEach(function(s){
+      var p = patches[s.id];
+      if(p) { Object.keys(p).forEach(function(k){ if(!s[k]) s[k]=p[k]; }); }
+    });
+    localStorage.setItem('pt_v3', JSON.stringify(db));
+  } catch(e) { console.error('Preload failed', e); }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PokéTracker — TCG Inventory</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0f0f13;--surface:#1a1a22;--surface2:#22222e;
+    --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+    --text:#f0efe8;--text2:#9e9d95;--text3:#5c5b57;
+    --accent:#f6c94e;--accent2:#e8a020;
+    --red:#e24b4a;--green:#5dca97;--blue:#378add;--purple:#9b8ddd;
+    --mono:'DM Mono',monospace;--sans:'Sora',sans-serif;
+    --radius:12px;--radius-sm:8px;
+  }
+  html, body { background: #0f0f13 !important; color: #f0efe8 !important; }
+  .app { background: #0f0f13; }
+  .sidebar { background: #1a1a22 !important; }
+  .page { background: #0f0f13; }
+  .card, .metric-card { background: #1a1a22 !important; }
+  .tab-bar { background: #1a1a22 !important; }
+  .modal { background: #1a1a22 !important; }
+  .modal-backdrop { background: rgba(0,0,0,0.65) !important; }
+  .cb-dropdown { background: #1e1e2a !important; }
+  .surface2 { background: #22222e !important; }
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;}
+  .app{display:flex;min-height:100vh;}
+  .sidebar{width:220px;background:var(--surface);border-right:1px solid var(--border);padding:24px 0;display:flex;flex-direction:column;position:fixed;height:100vh;z-index:10;}
+  .logo{padding:0 20px 28px;border-bottom:1px solid var(--border);margin-bottom:16px;}
+  .logo h1{font-size:18px;font-weight:600;letter-spacing:-0.5px;}
+  .logo span{color:var(--accent);}
+  .logo p{font-size:11px;color:var(--text3);margin-top:2px;font-family:var(--mono);}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;color:var(--text2);font-size:13px;border-left:2px solid transparent;transition:all 0.15s;}
+  .nav-item:hover{color:var(--text);background:rgba(255,255,255,0.04);}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:rgba(246,201,78,0.06);}
+  .nav-icon{width:16px;text-align:center;font-size:14px;}
+  .sidebar-footer{margin-top:auto;padding:16px 20px;border-top:1px solid var(--border);}
+  .stat-mini{font-family:var(--mono);font-size:11px;color:var(--text3);}
+  .stat-mini strong{color:var(--text2);}
+  .main{margin-left:220px;flex:1;}
+  .page{display:none;padding:32px;}
+  .page.active{display:block;}
+  .page-header{margin-bottom:28px;}
+  .page-header h2{font-size:22px;font-weight:600;letter-spacing:-0.5px;}
+  .page-header p{color:var(--text2);font-size:13px;margin-top:4px;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
+  .card-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-bottom:12px;}
+  .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+  .metric-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;}
+  .metric-label{font-size:11px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;}
+  .metric-value{font-size:26px;font-weight:600;font-family:var(--mono);letter-spacing:-1px;}
+  .metric-sub{font-size:11px;color:var(--text3);margin-top:4px;}
+  .metric-up{color:var(--green);}.metric-down{color:var(--red);}
+  .metric-neutral{color:var(--text);}.metric-gold{color:var(--accent);}
+  .table-wrap{overflow-x:auto;}
+  table{width:max-content;min-width:100%;border-collapse:collapse;font-size:13px;table-layout:auto;background:#1a1a22;}
+  th{text-align:left;padding:10px 12px;font-size:11px;font-weight:500;color:#5c5b57;text-transform:uppercase;letter-spacing:0.8px;border-bottom:1px solid rgba(255,255,255,0.08);font-family:var(--mono);position:relative;user-select:none;white-space:nowrap;background:#1a1a22 !important;}
+  th .col-resize{position:absolute;right:0;top:0;bottom:0;width:6px;cursor:col-resize;background:transparent;z-index:2;}
+  th .col-resize:hover,th.resizing .col-resize{background:var(--accent);opacity:0.5;}
+  th.resizing{background:rgba(246,201,78,0.05) !important;}
+  th.sortable{cursor:pointer;padding-right:22px;}
+  th.sortable:hover{color:#f0efe8;}
+  th.sort-asc,th.sort-desc{color:var(--accent);}
+  th .sort-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:10px;opacity:0.4;pointer-events:none;}
+  th.sort-asc .sort-arrow,th.sort-desc .sort-arrow{opacity:1;color:var(--accent);}
+  td{padding:11px 12px;border-bottom:1px solid rgba(255,255,255,0.08);color:#f0efe8;vertical-align:middle;white-space:nowrap;background:#1a1a22 !important;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:#22222e !important;}
+  .empty-row td{text-align:center;color:#5c5b57;padding:32px;font-size:13px;background:#1a1a22 !important;}
+  .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-family:var(--mono);font-weight:500;}
+  .badge-rare{background:rgba(155,141,221,0.15);color:var(--purple);}
+  .badge-ultra{background:rgba(246,201,78,0.15);color:var(--accent);}
+  .badge-secret{background:rgba(226,75,74,0.15);color:var(--red);}
+  .badge-holo{background:rgba(55,138,221,0.15);color:var(--blue);}
+  .badge-common{background:rgba(93,202,151,0.12);color:var(--green);}
+  .badge-nm{background:rgba(93,202,151,0.12);color:var(--green);}
+  .badge-lp{background:rgba(246,201,78,0.12);color:var(--accent);}
+  .badge-mp{background:rgba(232,160,32,0.12);color:var(--accent2);}
+  .badge-hp{background:rgba(226,75,74,0.12);color:var(--red);}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;overflow:visible;}
+  .form-group{display:flex;flex-direction:column;gap:6px;position:relative;overflow:visible;}
+  .form-group label{font-size:11px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.8px;}
+  .form-group input,.form-group select{background:#22222e;border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;color:#f0efe8;font-family:var(--sans);font-size:13px;outline:none;transition:border-color 0.15s;width:100%;}
+  .form-group input:focus{border-color:var(--border2);}
+  .form-group select option{background:#1a1a22;}
+  .form-full{grid-column:1 / -1;}
+  .cell-input{background:transparent !important;border:none;border-bottom:1px solid transparent;color:#f0efe8 !important;font-family:var(--sans);font-size:13px;outline:none;width:100%;padding:2px 0;transition:border-color 0.15s;cursor:pointer;}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:var(--radius-sm);font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text);transition:all 0.15s;}
+  .btn:hover{background:rgba(255,255,255,0.06);}
+  .btn-primary{background:var(--accent);color:#0f0f13;border-color:var(--accent);font-weight:600;}
+  .btn-primary:hover{background:var(--accent2);border-color:var(--accent2);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:24px;}
+  .import-zone{border:1.5px dashed var(--border2);border-radius:var(--radius);padding:28px;text-align:center;cursor:pointer;transition:all 0.15s;margin-bottom:20px;}
+  .import-zone:hover{border-color:var(--accent);background:rgba(246,201,78,0.04);}
+  .import-zone p{color:var(--text3);font-size:13px;margin-top:6px;}
+  .import-icon{font-size:22px;}
+  .delete-btn{background:none;border:none;color:var(--text3);cursor:pointer;padding:4px;border-radius:4px;font-size:14px;transition:color 0.15s;}
+  .delete-btn:hover{color:var(--red);}
+  .qty-stepper{display:inline-flex;align-items:center;gap:6px;}
+  .qty-btn{background:none;border:1px solid var(--border);color:var(--text2);cursor:pointer;width:22px;height:22px;border-radius:4px;font-size:14px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:all 0.15s;font-family:var(--mono);}
+  .qty-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .price-wrap{display:inline-flex;align-items:center;gap:2px;}
+  .price-wrap .price-sym{font-family:var(--mono);font-size:13px;color:var(--text3);}
+  .cell-input:hover{border-bottom-color:var(--border2);}
+  .cell-input:focus{border-bottom-color:var(--accent);background:rgba(246,201,78,0.04);border-radius:2px;cursor:text;}
+  .cell-input.mono{font-family:var(--mono);}
+  .cell-input.dim{color:var(--text2);}
+  .cell-input.dimmer{color:var(--text3);font-size:12px;}
+  .qty-val{font-family:var(--mono);font-size:13px;min-width:36px;text-align:center;background:transparent !important;border:none;border-bottom:1px solid rgba(255,255,255,0.1);color:#f0efe8 !important;outline:none;padding:1px 2px;width:36px;}
+  .qty-val:focus{border-bottom-color:var(--accent);}
+  .tab-bar{display:flex;gap:4px;margin-bottom:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px;width:fit-content;}
+  .tab{padding:7px 16px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--text2);transition:all 0.15s;}
+  .tab.active{background:var(--surface2);color:var(--text);}
+  .profit-pos{color:var(--green);font-family:var(--mono);}
+  .profit-neg{color:var(--red);font-family:var(--mono);}
+  .mono{font-family:var(--mono);}
+  .mini-bars{display:flex;flex-direction:column;gap:8px;}
+  .mini-bar-row{display:flex;align-items:center;gap:10px;}
+  .mini-bar-label{width:120px;font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .mini-bar-track{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;}
+  .mini-bar-fill{height:100%;background:var(--accent);border-radius:3px;transition:width 0.4s ease;}
+  .mini-bar-val{font-size:11px;font-family:var(--mono);color:var(--text3);width:50px;text-align:right;}
+  .alert{padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:16px;display:none;}
+  .alert-success{background:rgba(93,202,151,0.12);color:var(--green);border:1px solid rgba(93,202,151,0.2);}
+  .alert-error{background:rgba(226,75,74,0.12);color:var(--red);border:1px solid rgba(226,75,74,0.2);}
+
+  /* ── Modal ── */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1000;display:none;align-items:center;justify-content:center;}
+  .modal-backdrop.open{display:flex;}
+  .modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:28px;width:480px;max-width:calc(100vw - 32px);max-height:90vh;overflow-y:auto;}
+  .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+  .modal-header h3{font-size:16px;font-weight:600;letter-spacing:-0.3px;}
+  .modal-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px;transition:color 0.15s;}
+  .modal-close:hover{color:var(--text);}
+  .modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;}
+  .btn-sell{background:var(--green);color:#0f0f13;border-color:var(--green);font-weight:600;}
+  .btn-sell:hover{background:#3daa71;border-color:#3daa71;}
+  .btn-rip{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:600;}
+  .btn-rip:hover{background:#7a6bbf;border-color:#7a6bbf;}
+  .inline-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:4px;font-family:var(--sans);font-size:11px;font-weight:600;cursor:pointer;border:1px solid;transition:all 0.15s;white-space:nowrap;}
+  .inline-sell{background:rgba(93,202,151,0.12);color:var(--green);border-color:rgba(93,202,151,0.3);}
+  .inline-sell:hover{background:rgba(93,202,151,0.22);}
+  .inline-rip{background:rgba(155,141,221,0.12);color:var(--purple);border-color:rgba(155,141,221,0.3);}
+  .inline-rip:hover{background:rgba(155,141,221,0.22);}
+
+  /* ── Combobox ── */
+  .cb-wrap{position:relative;}
+  .cb-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#1e1e2a;border:1px solid var(--border2);border-radius:var(--radius-sm);z-index:2000;max-height:220px;overflow-y:auto;box-shadow:0 10px 30px rgba(0,0,0,0.6);display:none;}
+  .cb-dropdown.open{display:block;}
+  .cb-section{padding:5px 12px 3px;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-family:var(--mono);border-top:1px solid var(--border);}
+  .cb-section:first-child{border-top:none;}
+  .cb-item{padding:8px 12px;font-size:13px;cursor:pointer;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .cb-item:hover,.cb-item.kb-active{background:rgba(246,201,78,0.1);color:var(--accent);}
+  .cb-hint{font-size:10px;font-family:var(--mono);color:var(--text3);flex-shrink:0;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:3px;}
+
+  @media(max-width:900px){
+    .sidebar{width:60px;}
+    .nav-item span,.logo p,.logo h1,.sidebar-footer{display:none;}
+    .main{margin-left:60px;}
+    .metric-grid{grid-template-columns:1fr 1fr;}
+    .two-col,.three-col,.form-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<nav class="sidebar">
+  <div class="logo">
+    <h1>Poké<span>Tracker</span></h1>
+    <p>TCG Inventory</p>
+  </div>
+  <div class="nav-item active" onclick="showPage('dashboard',this)"><span class="nav-icon">◈</span><span>Dashboard</span></div>
+  <div class="nav-item" onclick="showPage('collection',this)"><span class="nav-icon">⊞</span><span>Slab/Raw</span></div>
+  <div class="nav-item" onclick="showPage('sealed',this)"><span class="nav-icon">⬡</span><span>Sealed Packs</span></div>
+  <div class="nav-item" onclick="showPage('packs',this)"><span class="nav-icon">◻</span><span>Pack Openings</span></div>
+  <div class="nav-item" onclick="showPage('sales',this)"><span class="nav-icon">↗</span><span>Sales</span></div>
+  <div class="nav-item" onclick="showPage('sync',this)"><span class="nav-icon">⇅</span><span>GitHub Sync</span></div>
+  <div class="sidebar-footer">
+    <div class="stat-mini">Cards: <strong id="sb-cards">0</strong></div>
+    <div class="stat-mini" style="margin-top:4px">Sealed: <strong id="sb-sealed">0</strong></div>
+    <div class="stat-mini" style="margin-top:8px;display:flex;align-items:center;gap:5px"><span id="sync-dot" style="width:7px;height:7px;border-radius:50%;background:var(--text3);flex-shrink:0;display:inline-block"></span><span id="sync-status-mini" style="color:var(--text3)">Not synced</span></div>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- DASHBOARD -->
+<div id="page-dashboard" class="page active">
+  <div class="page-header"><h2>Dashboard</h2><p>Overview of your Pokémon TCG collection</p></div>
+  <div class="metric-grid">
+    <div class="metric-card"><div class="metric-label">Total Cards</div><div class="metric-value metric-neutral" id="m-cards">0</div><div class="metric-sub">in collection</div></div>
+    <div class="metric-card"><div class="metric-label">Sealed Items</div><div class="metric-value metric-gold" id="m-sealed">0</div><div class="metric-sub">packs &amp; boxes</div></div>
+    <div class="metric-card"><div class="metric-label">Total Spent</div><div class="metric-value metric-neutral" id="m-spent">$0</div><div class="metric-sub">packs + sealed</div></div>
+    <div class="metric-card"><div class="metric-label">Net Profit</div><div class="metric-value" id="m-profit">$0</div><div class="metric-sub">from sales</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card"><div class="card-title">Spending by Set</div><div class="mini-bars" id="dash-set-bars"><p style="color:var(--text3);font-size:13px">No data yet.</p></div></div>
+    <div class="card"><div class="card-title">Recent Sales</div><div id="dash-recent-sales"><p style="color:var(--text3);font-size:13px">No sales yet.</p></div></div>
+  </div>
+  <div class="two-col">
+    <div class="card"><div class="card-title">Rarity Breakdown</div><div class="mini-bars" id="dash-rarity-bars"><p style="color:var(--text3);font-size:13px">No cards yet.</p></div></div>
+    <div class="card"><div class="card-title">Sales by Platform</div><div class="mini-bars" id="dash-platform-bars"><p style="color:var(--text3);font-size:13px">No sales yet.</p></div></div>
+  </div>
+</div>
+
+<!-- SLAB/RAW -->
+<div id="page-collection" class="page">
+  <div class="page-header"><h2>Slab/Raw</h2><p>Track your graded slabs and raw cards</p></div>
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab(this,'col-add')">Add Card</div>
+    <div class="tab" onclick="switchTab(this,'col-import')">Import CSV/Excel</div>
+  </div>
+  <div id="col-add" class="card" style="margin-bottom:20px">
+    <div class="card-title">Add a Card</div>
+    <div id="col-alert" class="alert"></div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group"><label>Card Name</label><div class="cb-wrap"><input id="c-name" placeholder="e.g. Charizard ex" autocomplete="off"><div class="cb-dropdown" id="cb-c-name"></div></div></div>
+      <div class="form-group"><label>Set</label><div class="cb-wrap"><input id="c-set" placeholder="e.g. Obsidian Flames" autocomplete="off"><div class="cb-dropdown" id="cb-c-set"></div></div></div>
+      <div class="form-group"><label>Rarity</label><div class="cb-wrap"><input id="c-rarity" placeholder="e.g. Ultra Rare" autocomplete="off"><div class="cb-dropdown" id="cb-c-rarity"></div></div></div>
+      <div class="form-group"><label>Condition</label><div class="cb-wrap"><input id="c-cond" placeholder="e.g. NM/M" autocomplete="off"><div class="cb-dropdown" id="cb-c-cond"></div></div></div>
+      <div class="form-group"><label>Quantity</label><input id="c-qty" type="number" min="1" value="1"></div>
+      <div class="form-group"><label>Cost Each ($)</label><input id="c-cost" type="number" min="0" step="0.01" placeholder="0.00"></div>
+    </div>
+    <button class="btn btn-primary" onclick="addCard()">+ Add Card</button>
+  </div>
+  <div id="col-import" class="card" style="margin-bottom:20px;display:none">
+    <div class="card-title">Import Cards</div>
+    <div class="import-zone" onclick="document.getElementById('col-file').click()">
+      <div class="import-icon">⬇</div><strong style="font-size:14px">Drop Excel/CSV or click to upload</strong>
+      <p>Columns: name, set, rarity, qty, cond, cost</p>
+      <input type="file" id="col-file" accept=".csv,.xlsx,.xls" style="display:none" onchange="importCards(this)">
+    </div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="card-title" style="margin:0">My Cards (<span id="col-count">0</span>)</div>
+      <input placeholder="Search..." style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 12px;color:var(--text);font-size:13px;outline:none;width:200px" oninput="renderCollection(this.value)">
+    </div>
+    <div class="table-wrap">
+      <table><thead><tr><th>Card<div class="col-resize"></div></th><th>Set<div class="col-resize"></div></th><th>Rarity<div class="col-resize"></div></th><th>Cond.<div class="col-resize"></div></th><th>Qty<div class="col-resize"></div></th><th>Cost<div class="col-resize"></div></th><th ></th></tr></thead>
+      <tbody id="col-table"><tr class="empty-row"><td colspan="7">No cards yet. Add one above.</td></tr></tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- SEALED -->
+<div id="page-sealed" class="page">
+  <div class="page-header"><h2>Sealed Stash</h2><p>Track unopened packs, boxes, and bundles</p></div>
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab(this,'seal-add')">Add Sealed</div>
+    <div class="tab" onclick="switchTab(this,'seal-import')">Import CSV/Excel</div>
+  </div>
+  <div id="seal-add" class="card" style="margin-bottom:20px">
+    <div class="card-title">Add to Stash</div>
+    <div id="seal-alert" class="alert"></div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group"><label>Item Name</label><div class="cb-wrap"><input id="s-name" placeholder="e.g. Obsidian Flames ETB" autocomplete="off"><div class="cb-dropdown" id="cb-s-name"></div></div></div>
+      <div class="form-group"><label>Type</label><div class="cb-wrap"><input id="s-type" placeholder="e.g. Booster Box" autocomplete="off"><div class="cb-dropdown" id="cb-s-type"></div></div></div>
+      <div class="form-group"><label>Pokémon Set</label><div class="cb-wrap"><input id="s-set" placeholder="e.g. Obsidian Flames" autocomplete="off"><div class="cb-dropdown" id="cb-s-set"></div></div></div>
+      <div class="form-group"><label>Quantity</label><input id="s-qty" type="number" min="1" value="1"></div>
+      <div class="form-group"><label>Price Each ($)</label><input id="s-price" type="number" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Date Acquired</label><input id="s-date" type="date"></div>
+    </div>
+    <button class="btn btn-primary" onclick="addSealed()">+ Add to Stash</button>
+  </div>
+  <div id="seal-import" class="card" style="margin-bottom:20px;display:none">
+    <div class="card-title">Import Sealed</div>
+    <div class="import-zone" onclick="document.getElementById('seal-file').click()">
+      <div class="import-icon">⬇</div><strong style="font-size:14px">Drop Excel/CSV or click to upload</strong>
+      <p>Columns: name, type, set, qty, price, date</p>
+      <input type="file" id="seal-file" accept=".csv,.xlsx,.xls" style="display:none" onchange="importSealed(this)">
+    </div>
+  </div>
+  <div class="three-col" style="margin-bottom:20px">
+    <div class="metric-card"><div class="metric-label">Total Sealed</div><div class="metric-value metric-gold" id="s-total-qty">0</div><div class="metric-sub">items in stash</div></div>
+    <div class="metric-card"><div class="metric-label">Total Spent</div><div class="metric-value metric-neutral" id="s-total-spent">$0</div><div class="metric-sub">on sealed</div></div>
+    <div class="metric-card"><div class="metric-label">Unique Sets</div><div class="metric-value metric-neutral" id="s-unique-sets">0</div><div class="metric-sub">Pokémon sets</div></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:20px">
+    <div class="card" style="display:flex;flex-direction:column;align-items:center">
+      <div class="card-title" style="align-self:flex-start">Spending by Type</div>
+      <div style="position:relative;width:280px;height:280px;flex-shrink:0">
+        <canvas id="donut-spend" width="280" height="280"></canvas>
+        <div id="donut-spend-center" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+          <div id="donut-spend-label" style="font-size:11px;color:#5c5b57;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.8px;text-align:center;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Total</div>
+          <div id="donut-spend-total" style="font-size:18px;font-weight:600;font-family:'DM Mono',monospace;color:#f0efe8"></div>
+        </div>
+      </div>
+      <div id="donut-spend-legend" style="width:100%;margin-top:14px;display:flex;flex-direction:column;gap:5px"></div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;align-items:center">
+      <div class="card-title" style="align-self:flex-start">Item Count by Type</div>
+      <div style="position:relative;width:280px;height:280px;flex-shrink:0">
+        <canvas id="donut-count" width="280" height="280"></canvas>
+        <div id="donut-count-center" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+          <div id="donut-count-label" style="font-size:11px;color:#5c5b57;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.8px;text-align:center;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Items</div>
+          <div id="donut-count-total" style="font-size:18px;font-weight:600;font-family:'DM Mono',monospace;color:#f0efe8"></div>
+        </div>
+      </div>
+      <div id="donut-count-legend" style="width:100%;margin-top:14px;display:flex;flex-direction:column;gap:5px"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <div class="card-title" style="margin:0;white-space:nowrap">Stash (<span id="seal-filtered-count">0</span>)</div>
+      <input id="seal-search" placeholder="Search items..." autocomplete="off"
+        style="background:#22222e;border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:6px 10px;color:#f0efe8;font-size:12px;outline:none;flex:1;min-width:120px"
+        oninput="renderSealed()">
+      <select id="seal-filter-type" onchange="renderSealed()"
+        style="background:#22222e;border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:6px 10px;color:#9e9d95;font-size:12px;outline:none;min-width:100px">
+        <option value="">All types</option>
+      </select>
+      <select id="seal-filter-set" onchange="renderSealed()"
+        style="background:#22222e;border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:6px 10px;color:#9e9d95;font-size:12px;outline:none;min-width:100px">
+        <option value="">All sets</option>
+      </select>
+      <select id="seal-filter-date" onchange="renderSealed()"
+        style="background:#22222e;border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm);padding:6px 10px;color:#9e9d95;font-size:12px;outline:none;min-width:100px">
+        <option value="">All dates</option>
+        <option value="7">Last 7 days</option>
+        <option value="30">Last 30 days</option>
+        <option value="90">Last 90 days</option>
+        <option value="365">Last year</option>
+      </select>
+      <button class="btn btn-sm" onclick="clearSealedFilters()" style="font-size:11px;padding:5px 10px;color:var(--text3);white-space:nowrap">Clear</button>
+      <button class="btn btn-sm" id="merge-btn" onclick="initMerge()" style="font-size:11px;padding:5px 10px;color:var(--accent);border-color:rgba(246,201,78,0.3);white-space:nowrap;display:none">⊕ Merge</button>
+    </div>
+    <div class="table-wrap">
+      <table><thead><tr>
+        <th style="width:32px"><input type="checkbox" id="seal-check-all" onchange="toggleAllSealedChecks(this)" style="cursor:pointer;accent-color:var(--accent)"></th>
+        <th class="sortable" onclick="setSealedSort('name')">Item<span class="sort-arrow" id="seal-sort-name">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('type')">Type<span class="sort-arrow" id="seal-sort-type">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('set')">Set<span class="sort-arrow" id="seal-sort-set">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('date')">Acquired<span class="sort-arrow" id="seal-sort-date">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('price')">Price<span class="sort-arrow" id="seal-sort-price">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('qty')">Qty<span class="sort-arrow" id="seal-sort-qty">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('total')">Total<span class="sort-arrow" id="seal-sort-total">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('market')">Mkt Price<span class="sort-arrow" id="seal-sort-market">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('pnlunit')">P&amp;L (unit)<span class="sort-arrow" id="seal-sort-pnlunit">↕</span><div class="col-resize"></div></th>
+        <th class="sortable" onclick="setSealedSort('gainloss')">Gain/Loss<span class="sort-arrow" id="seal-sort-gainloss">↕</span><div class="col-resize"></div></th>
+        <th></th>
+      </tr></thead>
+      <tbody id="seal-table"><tr class="empty-row"><td colspan="12">No sealed items yet.</td></tr></tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- PACK OPENINGS -->
+<div id="page-packs" class="page">
+  <div class="page-header"><h2>Pack Openings</h2><p>Log your pack opening sessions and notable pulls</p></div>
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab(this,'pk-add')">Log Opening</div>
+    <div class="tab" onclick="switchTab(this,'pk-import')">Import CSV/Excel</div>
+  </div>
+  <div id="pk-add" class="card" style="margin-bottom:20px">
+    <div class="card-title">Log Pack Opening</div>
+    <div id="pk-alert" class="alert"></div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group"><label>Set Name</label><div class="cb-wrap"><input id="p-set" placeholder="e.g. Temporal Forces" autocomplete="off"><div class="cb-dropdown" id="cb-p-set"></div></div></div>
+      <div class="form-group"><label>Packs Opened</label><input id="p-count" type="number" min="1" value="1"></div>
+      <div class="form-group"><label>Price Paid Each ($)</label><input id="p-price" type="number" min="0" step="0.01" placeholder="5.00"></div>
+      <div class="form-group"><label>Date</label><input id="p-date" type="date"></div>
+      <div class="form-group form-full"><label>Notes / Notable Pulls</label><div class="cb-wrap"><input id="p-notes" placeholder="e.g. Got Charizard ex, 2x Pikachu ex" autocomplete="off"><div class="cb-dropdown" id="cb-p-notes"></div></div></div>
+    </div>
+    <button class="btn btn-primary" onclick="addPack()">Log Opening</button>
+  </div>
+  <div id="pk-import" class="card" style="margin-bottom:20px;display:none">
+    <div class="card-title">Import Pack Log</div>
+    <div class="import-zone" onclick="document.getElementById('pk-file').click()">
+      <div class="import-icon">⬇</div><strong style="font-size:14px">Drop Excel/CSV or click to upload</strong>
+      <p>Columns: set, count, date, price, notes</p>
+      <input type="file" id="pk-file" accept=".csv,.xlsx,.xls" style="display:none" onchange="importPacks(this)">
+    </div>
+  </div>
+  <div class="three-col" style="margin-bottom:20px">
+    <div class="metric-card"><div class="metric-label">Packs Opened</div><div class="metric-value metric-neutral" id="pk-total">0</div><div class="metric-sub">all time</div></div>
+    <div class="metric-card"><div class="metric-label">Total Spent</div><div class="metric-value metric-neutral" id="pk-spent">$0</div><div class="metric-sub">opening packs</div></div>
+    <div class="metric-card"><div class="metric-label">Avg per Pack</div><div class="metric-value metric-neutral" id="pk-avg">—</div><div class="metric-sub">cost per pack</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Pack History</div>
+    <div class="table-wrap">
+      <table><thead><tr><th>Set<div class="col-resize"></div></th><th>Packs<div class="col-resize"></div></th><th>Date<div class="col-resize"></div></th><th>Price/Pack<div class="col-resize"></div></th><th>Total<div class="col-resize"></div></th><th>Notes<div class="col-resize"></div></th><th ></th></tr></thead>
+      <tbody id="pk-table"><tr class="empty-row"><td colspan="7">No openings logged yet.</td></tr></tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- SALES -->
+<div id="page-sales" class="page">
+  <div class="page-header"><h2>Sales</h2><p>Track what you've sold and your profit</p></div>
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab(this,'sal-add')">Log Sale</div>
+    <div class="tab" onclick="switchTab(this,'sal-import')">Import CSV/Excel</div>
+  </div>
+  <div id="sal-add" class="card" style="margin-bottom:20px">
+    <div class="card-title">Log a Sale</div>
+    <div id="sal-alert" class="alert"></div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group"><label>Item Name</label><div class="cb-wrap"><input id="sl-name" placeholder="e.g. Charizard ex PSA 10" autocomplete="off"><div class="cb-dropdown" id="cb-sl-name"></div></div></div>
+      <div class="form-group"><label>Category</label><div class="cb-wrap"><input id="sl-cat" placeholder="e.g. Single Card" autocomplete="off"><div class="cb-dropdown" id="cb-sl-cat"></div></div></div>
+      <div class="form-group"><label>Cost Basis ($)</label><input id="sl-cost" type="number" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Sale Price ($)</label><input id="sl-sold" type="number" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Platform</label><div class="cb-wrap"><input id="sl-plat" placeholder="e.g. eBay" autocomplete="off"><div class="cb-dropdown" id="cb-sl-plat"></div></div></div>
+      <div class="form-group"><label>Date Sold</label><input id="sl-date" type="date"></div>
+      <div class="form-group form-full"><label>Notes</label><div class="cb-wrap"><input id="sl-notes" placeholder="Optional notes..." autocomplete="off"><div class="cb-dropdown" id="cb-sl-notes"></div></div></div>
+    </div>
+    <button class="btn btn-primary" onclick="addSale()">Log Sale</button>
+  </div>
+  <div id="sal-import" class="card" style="margin-bottom:20px;display:none">
+    <div class="card-title">Import Sales</div>
+    <div class="import-zone" onclick="document.getElementById('sal-file').click()">
+      <div class="import-icon">⬇</div><strong style="font-size:14px">Drop Excel/CSV or click to upload</strong>
+      <p>Columns: name, category, platform, date, cost, sold, notes</p>
+      <input type="file" id="sal-file" accept=".csv,.xlsx,.xls" style="display:none" onchange="importSales(this)">
+    </div>
+  </div>
+  <div class="metric-grid" style="margin-bottom:20px">
+    <div class="metric-card"><div class="metric-label">Total Revenue</div><div class="metric-value metric-neutral" id="sal-rev">$0</div><div class="metric-sub">gross sales</div></div>
+    <div class="metric-card"><div class="metric-label">Total Cost</div><div class="metric-value metric-neutral" id="sal-cost-el">$0</div><div class="metric-sub">cost of goods</div></div>
+    <div class="metric-card"><div class="metric-label">Net Profit</div><div class="metric-value" id="sal-profit">$0</div><div class="metric-sub">after costs</div></div>
+    <div class="metric-card"><div class="metric-label">Items Sold</div><div class="metric-value metric-neutral" id="sal-count">0</div><div class="metric-sub">transactions</div></div>
+  </div>
+  <div class="two-col" style="margin-bottom:20px">
+    <div class="card"><div class="card-title">Revenue by Platform</div><div class="mini-bars" id="sal-plat-bars"><p style="color:var(--text3);font-size:13px">No data yet.</p></div></div>
+    <div class="card"><div class="card-title">Profit by Category</div><div class="mini-bars" id="sal-cat-bars"><p style="color:var(--text3);font-size:13px">No data yet.</p></div></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="card-title" style="margin:0">Sales History</div>
+      <input placeholder="Search..." style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 12px;color:var(--text);font-size:13px;outline:none;width:200px" oninput="renderSales(this.value)">
+    </div>
+    <div class="table-wrap">
+      <table><thead><tr><th>Item<div class="col-resize"></div></th><th>Category<div class="col-resize"></div></th><th>Platform<div class="col-resize"></div></th><th>Date<div class="col-resize"></div></th><th>Cost<div class="col-resize"></div></th><th>Sale<div class="col-resize"></div></th><th>Profit<div class="col-resize"></div></th><th ></th></tr></thead>
+      <tbody id="sal-table"><tr class="empty-row"><td colspan="8">No sales logged yet.</td></tr></tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- GITHUB SYNC -->
+<div id="page-sync" class="page">
+  <div class="page-header"><h2>GitHub Sync</h2><p>Push and pull your inventory data to a GitHub repository</p></div>
+
+  <div class="two-col" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-title">Configuration</div>
+      <div id="sync-config-alert" class="alert"></div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="form-group">
+          <label>GitHub Personal Access Token</label>
+          <input id="gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="background:#22222e;border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;color:#f0efe8;font-family:var(--mono);font-size:13px;outline:none;width:100%">
+          <span style="font-size:11px;color:var(--text3)">Needs <code style="background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px">repo</code> scope. <a href="https://github.com/settings/tokens/new" target="_blank" style="color:var(--blue)">Create one here ↗</a></span>
+        </div>
+        <div class="form-group">
+          <label>Repository (owner/repo)</label>
+          <input id="gh-repo" type="text" placeholder="yourname/poketracker-data" style="background:#22222e;border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;color:#f0efe8;font-family:var(--sans);font-size:13px;outline:none;width:100%">
+        </div>
+        <div class="form-group">
+          <label>Branch</label>
+          <input id="gh-branch" type="text" placeholder="main" style="background:#22222e;border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;color:#f0efe8;font-family:var(--sans);font-size:13px;outline:none;width:100%">
+        </div>
+        <div class="form-group">
+          <label>File path in repo</label>
+          <input id="gh-path" type="text" placeholder="data/poketracker.json" style="background:#22222e;border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 12px;color:#f0efe8;font-family:var(--sans);font-size:13px;outline:none;width:100%">
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="ghSaveConfig()">💾 Save Config</button>
+          <button class="btn" onclick="ghTestConnection()">Test Connection</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Sync Status</div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div id="sync-indicator" style="width:12px;height:12px;border-radius:50%;background:var(--text3);flex-shrink:0"></div>
+          <div>
+            <div id="sync-status-text" style="font-size:14px;font-weight:500">Not configured</div>
+            <div id="sync-status-sub" style="font-size:12px;color:var(--text3);margin-top:2px">Set up your GitHub config to get started</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;font-family:var(--mono)">
+          <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:10px">
+            <div style="color:var(--text3);margin-bottom:4px">LAST PUSH</div>
+            <div id="sync-last-push" style="color:var(--text2)">—</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:10px">
+            <div style="color:var(--text3);margin-bottom:4px">LAST PULL</div>
+            <div id="sync-last-pull" style="color:var(--text2)">—</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn" style="flex:1;background:rgba(55,138,221,0.12);color:var(--blue);border-color:rgba(55,138,221,0.3);font-weight:600;justify-content:center" onclick="ghPush()">⬆ Push to GitHub</button>
+          <button class="btn" style="flex:1;background:rgba(93,202,151,0.12);color:var(--green);border-color:rgba(93,202,151,0.3);font-weight:600;justify-content:center" onclick="ghPull()">⬇ Pull from GitHub</button>
+        </div>
+        <div id="sync-log" style="background:var(--surface2);border-radius:var(--radius-sm);padding:10px;font-family:var(--mono);font-size:11px;color:var(--text3);min-height:60px;max-height:140px;overflow-y:auto;white-space:pre-wrap">Sync log will appear here...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Setup Instructions</div>
+    <div style="display:flex;flex-direction:column;gap:12px;font-size:13px;color:var(--text2);line-height:1.7">
+      <div><strong style="color:var(--accent)">1.</strong> Create a new GitHub repository (can be private) — e.g. <code style="background:rgba(255,255,255,0.06);padding:1px 6px;border-radius:3px;font-family:var(--mono)">yourname/poketracker-data</code></div>
+      <div><strong style="color:var(--accent)">2.</strong> Go to <a href="https://github.com/settings/tokens/new" target="_blank" style="color:var(--blue)">github.com/settings/tokens/new ↗</a>, create a <strong>classic token</strong> with <code style="background:rgba(255,255,255,0.06);padding:1px 6px;border-radius:3px;font-family:var(--mono)">repo</code> scope checked.</div>
+      <div><strong style="color:var(--accent)">3.</strong> Paste the token, repo name, branch (<code style="background:rgba(255,255,255,0.06);padding:1px 6px;border-radius:3px;font-family:var(--mono)">main</code>), and file path above, then click <strong>Save Config</strong>.</div>
+      <div><strong style="color:var(--accent)">4.</strong> Click <strong>Push to GitHub</strong> to upload your current data. From any other device, open the same HTML file and click <strong>Pull from GitHub</strong> to load it.</div>
+      <div style="background:rgba(246,201,78,0.08);border:1px solid rgba(246,201,78,0.2);border-radius:var(--radius-sm);padding:10px 14px;color:var(--text2)">⚠ Your token is stored in <strong>localStorage only</strong> — it never leaves your browser except when making GitHub API calls directly. Never share your token.</div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+
+<script>
+// ── DATA ──
+let db={cards:[],sealed:[],packs:[],sales:[]};
+function save(){try{localStorage.setItem('pt_v3',JSON.stringify(db));}catch(e){}}
+function load(){try{const d=localStorage.getItem('pt_v3');if(d)db=JSON.parse(d);}catch(e){}}
+load();
+
+// ── MIGRATE: move slab/raw entries from sealed → cards ──
+function migrateSlabRaw(){
+  const isSlabRaw = t => /slab|raw/i.test(t||'');
+  const toMigrate = db.sealed.filter(s => isSlabRaw(s.type));
+  if(!toMigrate.length) return;
+  toMigrate.forEach(s => {
+    // Only add if not already in cards (by id)
+    if(!db.cards.find(c => c.id === s.id)){
+      db.cards.push({
+        id: s.id,
+        name: s.name,
+        set: s.set||'',
+        rarity: s.type, // store the slab grade / raw as rarity field
+        cond: s.type,
+        qty: s.qty,
+        cost: s.price,
+      });
+    }
+  });
+  db.sealed = db.sealed.filter(s => !isSlabRaw(s.type));
+  save();
+}
+migrateSlabRaw();
+
+// ── COMBOBOX ──
+const SETS=['Prismatic Evolutions','Surging Sparks','Stellar Crown','Shrouded Fable','Twilight Masquerade','Temporal Forces','Paradox Rift','Obsidian Flames','Paldea Evolved','Scarlet & Violet Base','Crown Zenith','Silver Tempest','Lost Origin','Astral Radiance','Brilliant Stars','Fusion Strike','Evolving Skies','Chilling Reign','Battle Styles','Vivid Voltage','Darkness Ablaze','Rebel Clash','Sword & Shield Base','Sun & Moon Base','XY Base'];
+const STATIC_OPTS={
+  'c-rarity':['Common','Uncommon','Rare','Holo Rare','ex / V','Ultra Rare','Secret Rare','Special Illustration Rare','Hyper Rare'],
+  'c-cond':['NM/M','LP','MP','HP','Damaged','PSA 10','PSA 9','PSA 8','BGS 10','BGS 9.5','CGC 10','CGC 9.5'],
+  'c-set':SETS,'s-set':SETS,'p-set':SETS,
+  's-type':['Booster Box','ETB','Booster Bundle','UPC','3-Pack Blister','2-Pack Blister','1-Pack Sleeved','SPC','Tin','Collection Box','Poster Box','Costco Box','Other'],
+  'sl-cat':['Single Card','Sealed Pack','Card Lot','Graded Card','Bundle / Box','Other'],
+  'sl-plat':['eBay','TCGPlayer','Facebook Marketplace','Local / LGS','Friend','Mercari','StockX','Other'],
+  'sl-notes':[],'p-notes':[],'sl-name':[],'s-name':[],'c-name':[],
+  'sell-plat':['eBay','TCGPlayer','Facebook Marketplace','Local / LGS','Friend','Mercari','StockX','Other'],
+  'rip-notes':[],
+};
+
+// Map cell-input data-col values to db column getters for inline suggestions
+const CELL_COL_DATA={
+  'name-sealed':  ()=>[...new Set(db.sealed.map(s=>s.name).filter(Boolean))],
+  'type-sealed':  ()=>[...new Set(db.sealed.map(s=>s.type).filter(Boolean))],
+  'set-sealed':   ()=>[...new Set([...SETS,...db.sealed.map(s=>s.set).filter(Boolean)])],
+  'name-cards':   ()=>[...new Set(db.cards.map(c=>c.name).filter(Boolean))],
+  'set-cards':    ()=>[...new Set([...SETS,...db.cards.map(c=>c.set).filter(Boolean)])],
+  'rarity-cards': ()=>[...new Set([...STATIC_OPTS['c-rarity'],...db.cards.map(c=>c.rarity).filter(Boolean)])],
+  'cond-cards':   ()=>[...new Set([...STATIC_OPTS['c-cond'],...db.cards.map(c=>c.cond).filter(Boolean)])],
+  'set-packs':    ()=>[...new Set([...SETS,...db.packs.map(p=>p.set).filter(Boolean)])],
+  'notes-packs':  ()=>[...new Set(db.packs.map(p=>p.notes).filter(Boolean))],
+  'name-sales':   ()=>[...new Set(db.sales.map(s=>s.name).filter(Boolean))],
+  'cat-sales':    ()=>[...new Set([...STATIC_OPTS['sl-cat'],...db.sales.map(s=>s.cat).filter(Boolean)])],
+  'platform-sales':()=>[...new Set([...STATIC_OPTS['sl-plat'],...db.sales.map(s=>s.platform).filter(Boolean)])],
+};
+
+function histKey(id){return'cb_h_'+id;}
+function getHist(id){try{return JSON.parse(localStorage.getItem(histKey(id)))||[];}catch(e){return[];}}
+function pushHist(id,val){
+  if(!val||val.trim().length<1)return;
+  val=val.trim();
+  let h=getHist(id).filter(x=>x!==val);
+  h.unshift(val);
+  try{localStorage.setItem(histKey(id),JSON.stringify(h.slice(0,25)));}catch(e){}
+}
+
+let _openDrop=null,_kbIdx=-1;
+
+function cbOpen(inp,drop){
+  if(_openDrop&&_openDrop!==drop)cbClose();
+  _openDrop=drop;_kbIdx=-1;
+  cbPopulate(inp,drop);
+  drop.classList.add('open');
+}
+function cbClose(){if(_openDrop){_openDrop.classList.remove('open');_openDrop=null;_kbIdx=-1;}}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function cbPopulate(inp,drop){
+  const id=inp.id,q=inp.value.trim().toLowerCase();
+  const hist=getHist(id||('cell_'+inp.dataset.col));
+  const statics=(STATIC_OPTS[id]||[]);
+  // For cell inputs, pull from live db column data
+  const colKey=inp.dataset.col;
+  const colData=colKey&&CELL_COL_DATA[colKey]?CELL_COL_DATA[colKey]().filter(v=>v&&typeof v==='string'):[];
+  const allStatics=[...new Set([...statics,...colData])];
+  const mh=hist.filter(v=>!q||v.toLowerCase().includes(q));
+  const ms=allStatics.filter(v=>!q||v.toLowerCase().includes(q)).filter(v=>!hist.includes(v));
+  let html='';
+  if(mh.length){
+    html+='<div class="cb-section">Recent</div>';
+    html+=mh.slice(0,8).map(v=>`<div class="cb-item" data-val="${esc(v)}" data-id="${id||''}" onmousedown="cbPickCell(event)"><span>${esc(v)}</span><span class="cb-hint">recent</span></div>`).join('');
+  }
+  if(ms.length){
+    html+='<div class="cb-section">Suggestions</div>';
+    html+=ms.slice(0,15).map(v=>`<div class="cb-item" data-val="${esc(v)}" data-id="${id||''}" onmousedown="cbPickCell(event)"><span>${esc(v)}</span></div>`).join('');
+  }
+  drop.innerHTML=html;
+  if(!html){cbClose();return;}
+}
+
+function cbPick(e){
+  e.preventDefault();
+  const v=e.currentTarget.dataset.val,id=e.currentTarget.dataset.id;
+  document.getElementById(id).value=v;
+  cbClose();
+}
+
+// Shared floating dropdown for cell-input fields
+let _cellDrop=null,_cellInp=null;
+function initCellDrop(){
+  if(document.getElementById('cell-cb-drop'))return;
+  const d=document.createElement('div');
+  d.id='cell-cb-drop';
+  d.className='cb-dropdown';
+  d.style.cssText='position:fixed;z-index:9999;min-width:200px;max-width:400px;';
+  document.body.appendChild(d);
+  _cellDrop=d;
+}
+
+function cbPickCell(e){
+  e.preventDefault();
+  const v=e.currentTarget.dataset.val;
+  if(_cellInp){
+    const prev=_cellInp.value;
+    _cellInp.value=v;
+    // Trigger onchange to save
+    if(prev!==v){
+      _cellInp.dispatchEvent(new Event('change',{bubbles:true}));
+      const colKey=_cellInp.dataset.col;
+      if(colKey)pushHist('cell_'+colKey,v);
+    }
+  }
+  cbClose();
+  closeCellDrop();
+}
+
+function openCellDrop(inp){
+  initCellDrop();
+  _cellInp=inp;
+  const q=inp.value.trim().toLowerCase();
+  const colKey=inp.dataset.col;
+  if(!colKey){closeCellDrop();return;}
+  const hist=getHist('cell_'+colKey);
+  // For set columns, always include the full SETS list as fallback
+  const isSetCol=colKey.startsWith('set-');
+  const colDataRaw=CELL_COL_DATA[colKey]?CELL_COL_DATA[colKey]().filter(v=>v&&typeof v==='string'):[];
+  const colData=isSetCol?[...new Set([...SETS,...colDataRaw])]:colDataRaw;
+  const mh=hist.filter(v=>!q||v.toLowerCase().includes(q));
+  const ms=colData.filter(v=>!q||v.toLowerCase().includes(q)).filter(v=>!hist.includes(v));
+  let html='';
+  if(mh.length){
+    html+='<div class="cb-section">Recent</div>';
+    html+=mh.slice(0,8).map(v=>`<div class="cb-item" data-val="${esc(v)}" onmousedown="cbPickCell(event)"><span>${esc(v)}</span><span class="cb-hint">recent</span></div>`).join('');
+  }
+  if(ms.length){
+    html+='<div class="cb-section">'+(isSetCol?'Pokémon Sets':'Existing')+'</div>';
+    html+=ms.slice(0,20).map(v=>`<div class="cb-item" data-val="${esc(v)}" onmousedown="cbPickCell(event)"><span>${esc(v)}</span></div>`).join('');
+  }
+  if(!html){closeCellDrop();return;}
+  _cellDrop.innerHTML=html;
+  // Position under input — use a minimum width for set columns
+  const rect=inp.getBoundingClientRect();
+  _cellDrop.style.top=(rect.bottom+window.scrollY+2)+'px';
+  _cellDrop.style.left=(rect.left+window.scrollX)+'px';
+  _cellDrop.style.width=Math.max(isSetCol?220:200,rect.width)+'px';
+  _cellDrop.classList.add('open');
+  _kbIdx=-1;
+}
+
+function closeCellDrop(){
+  if(_cellDrop)_cellDrop.classList.remove('open');
+  _cellInp=null;_kbIdx=-1;
+}
+
+function cellDropKey(e){
+  if(!_cellDrop||!_cellDrop.classList.contains('open'))return;
+  const items=_cellDrop.querySelectorAll('.cb-item');
+  if(!items.length)return;
+  if(e.key==='ArrowDown'){e.preventDefault();_kbIdx=Math.min(_kbIdx+1,items.length-1);items.forEach((it,i)=>it.classList.toggle('kb-active',i===_kbIdx));}
+  else if(e.key==='ArrowUp'){e.preventDefault();_kbIdx=Math.max(_kbIdx-1,0);items.forEach((it,i)=>it.classList.toggle('kb-active',i===_kbIdx));}
+  else if(e.key==='Enter'&&_kbIdx>=0){
+    e.preventDefault();
+    const v=items[_kbIdx].dataset.val;
+    if(_cellInp){
+      _cellInp.value=v;
+      _cellInp.dispatchEvent(new Event('change',{bubbles:true}));
+      const colKey=_cellInp.dataset.col;
+      if(colKey)pushHist('cell_'+colKey,v);
+    }
+    closeCellDrop();
+  } else if(e.key==='Escape'){closeCellDrop();}
+}
+
+function cbKey(e,inp,drop){
+  if(!_openDrop||_openDrop!==drop)return;
+  const items=drop.querySelectorAll('.cb-item');
+  if(!items.length)return;
+  if(e.key==='ArrowDown'){e.preventDefault();_kbIdx=Math.min(_kbIdx+1,items.length-1);items.forEach((it,i)=>it.classList.toggle('kb-active',i===_kbIdx));}
+  else if(e.key==='ArrowUp'){e.preventDefault();_kbIdx=Math.max(_kbIdx-1,0);items.forEach((it,i)=>it.classList.toggle('kb-active',i===_kbIdx));}
+  else if(e.key==='Enter'&&_kbIdx>=0){e.preventDefault();inp.value=items[_kbIdx].dataset.val;cbClose();}
+  else if(e.key==='Escape')cbClose();
+}
+
+function initCB(){
+  document.querySelectorAll('.cb-wrap input').forEach(inp=>{
+    const drop=inp.nextElementSibling;
+    if(!drop||!drop.classList.contains('cb-dropdown'))return;
+    inp.addEventListener('focus',()=>cbOpen(inp,drop));
+    inp.addEventListener('input',()=>{if(_openDrop===drop)cbPopulate(inp,drop);else cbOpen(inp,drop);});
+    inp.addEventListener('keydown',e=>cbKey(e,inp,drop));
+  });
+  document.addEventListener('mousedown',e=>{
+    if(!e.target.closest('.cb-wrap')&&e.target!==_cellDrop&&!e.target.closest('#cell-cb-drop'))cbClose();
+    if(e.target!==_cellInp&&!e.target.closest('#cell-cb-drop'))closeCellDrop();
+  });
+  // Wire cell-input fields
+  document.querySelectorAll('.cell-input[data-col]').forEach(inp=>{
+    if(inp._cellCBReady)return;
+    inp._cellCBReady=true;
+    inp.addEventListener('focus',()=>openCellDrop(inp));
+    inp.addEventListener('input',()=>openCellDrop(inp));
+    inp.addEventListener('keydown',e=>cellDropKey(e));
+    inp.addEventListener('blur',()=>{
+      // delay so mousedown on dropdown item fires first
+      setTimeout(()=>{if(document.activeElement!==_cellInp)closeCellDrop();},150);
+    });
+  });
+}
+
+function recHist(id){const el=document.getElementById(id);if(el&&el.value.trim())pushHist(id,el.value.trim());}
+
+// ── NAV ──
+function showPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  el.classList.add('active');
+  renderAll();
+  if(id==='sync')ghPopulateFields();
+}
+const TAB_IDS=['col-add','col-import','seal-add','seal-import','pk-add','pk-import','sal-add','sal-import'];
+function switchTab(el,targetId){
+  el.closest('.tab-bar').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  TAB_IDS.forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
+  document.getElementById(targetId).style.display='';
+}
+TAB_IDS.filter(id=>id.endsWith('-import')).forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+
+// ── HELPERS ──
+function fmt(n){return'$'+(parseFloat(n)||0).toFixed(2);}
+function fmtN(n){return(parseInt(n)||0).toLocaleString();}
+function today(){return new Date().toISOString().split('T')[0];}
+function showAlert(id,msg,type='success'){const el=document.getElementById(id);el.textContent=msg;el.className='alert alert-'+type;el.style.display='block';setTimeout(()=>el.style.display='none',3000);}
+function rarBadge(r){const m={'Secret Rare':'badge-secret','Ultra Rare':'badge-ultra','Special Illustration Rare':'badge-ultra','Hyper Rare':'badge-secret','ex / V':'badge-ultra','Holo Rare':'badge-holo','Rare':'badge-rare','Common':'badge-common','Uncommon':'badge-common'};return`<span class="badge ${m[r]||'badge-common'}">${r}</span>`;}
+function condBadge(c){const m={'NM/M':'badge-nm','LP':'badge-lp','MP':'badge-mp','HP':'badge-hp','Damaged':'badge-hp'};const base=c.startsWith('PSA')||c.startsWith('BGS')||c.startsWith('CGC')?'badge-ultra':'';return`<span class="badge ${m[c]||base||'badge-nm'}">${c}</span>`;}
+function pClass(n){return n>=0?'profit-pos':'profit-neg';}
+
+// ── CARDS ──
+function addCard(){
+  const name=document.getElementById('c-name').value.trim();
+  if(!name){showAlert('col-alert','Card name is required.','error');return;}
+  ['c-name','c-set','c-rarity','c-cond'].forEach(recHist);
+  db.cards.push({id:Date.now(),name,set:document.getElementById('c-set').value.trim(),rarity:document.getElementById('c-rarity').value.trim()||'Common',cond:document.getElementById('c-cond').value.trim()||'NM/M',qty:parseInt(document.getElementById('c-qty').value)||1,cost:parseFloat(document.getElementById('c-cost').value)||0});
+  save();renderAll();
+  ['c-name','c-set','c-rarity','c-cond','c-cost'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('c-qty').value='1';
+  showAlert('col-alert','Card added!');
+}
+function deleteCard(id){db.cards=db.cards.filter(c=>c.id!==id&&c.id!==+id);save();renderAll();}
+function updateCard(id,field,value){
+  const item=db.cards.find(c=>c.id===id||c.id===+id);
+  if(!item)return;
+  item[field]=value;
+  save();
+  renderDashboard();
+}
+function renderCollection(filter=''){
+  const f=filter.toLowerCase();
+  const rows=db.cards.filter(c=>!f||c.name.toLowerCase().includes(f)||(c.set||'').toLowerCase().includes(f));
+  document.getElementById('col-count').textContent=db.cards.reduce((a,c)=>a+c.qty,0);
+  const tbody=document.getElementById('col-table');
+  if(!rows.length){tbody.innerHTML='<tr class="empty-row"><td colspan="7">No cards match.</td></tr>';return;}
+  tbody.innerHTML=rows.map(c=>`<tr>
+    <td><input class="cell-input" data-col="name-cards" value="${c.name}" onchange="updateCard(${c.id},'name',this.value)" onblur="updateCard(${c.id},'name',this.value)"></td>
+    <td><input class="cell-input dim" data-col="set-cards" value="${c.set||''}" placeholder="—" style="min-width:80px" onchange="updateCard(${c.id},'set',this.value)" onblur="updateCard(${c.id},'set',this.value)"></td>
+    <td><input class="cell-input" data-col="rarity-cards" value="${c.rarity||''}" onchange="updateCard(${c.id},'rarity',this.value)" onblur="updateCard(${c.id},'rarity',this.value)" list="rarity-list"></td>
+    <td><input class="cell-input" data-col="cond-cards" value="${c.cond||''}" onchange="updateCard(${c.id},'cond',this.value)" onblur="updateCard(${c.id},'cond',this.value)" list="cond-list"></td>
+    <td><input class="cell-input mono" type="number" min="0" value="${c.qty}" onchange="updateCard(${c.id},'qty',parseInt(this.value)||0)"></td>
+    <td><input class="cell-input mono" type="number" min="0" step="0.01" value="${c.cost||''}" placeholder="—" onchange="updateCard(${c.id},'cost',parseFloat(this.value)||0)"></td>
+    <td><button class="delete-btn" onclick="deleteCard(${c.id})">✕</button></td>
+  </tr>`).join('');
+  setTimeout(()=>initCB(),0);
+  if(!document.getElementById('rarity-list')){
+    const dl=document.createElement('datalist');dl.id='rarity-list';
+    ['Common','Uncommon','Rare','Holo Rare','ex / V','Ultra Rare','Secret Rare','Special Illustration Rare','Hyper Rare'].forEach(v=>{const o=document.createElement('option');o.value=v;dl.appendChild(o);});
+    document.body.appendChild(dl);
+  }
+  if(!document.getElementById('cond-list')){
+    const dl=document.createElement('datalist');dl.id='cond-list';
+    ['NM/M','LP','MP','HP','Damaged','PSA 10','PSA 9','PSA 8','BGS 10','BGS 9.5','CGC 10','CGC 9.5'].forEach(v=>{const o=document.createElement('option');o.value=v;dl.appendChild(o);});
+    document.body.appendChild(dl);
+  }
+}
+function importCards(input){handleFile(input,rows=>{rows.forEach(r=>{if(!r.name&&!r[0])return;db.cards.push({id:Date.now()+Math.random(),name:r.name||r[0]||'',set:r.set||r[1]||'',rarity:r.rarity||r[2]||'Common',qty:parseInt(r.qty||r[3])||1,cond:r.cond||r[4]||'NM/M',cost:parseFloat(r.cost||r[5])||0});});save();renderAll();showAlert('col-alert',`Imported ${rows.length} cards!`);});}
+
+// ── SEALED ──
+function addSealed(){
+  const name=document.getElementById('s-name').value.trim();
+  if(!name){showAlert('seal-alert','Item name is required.','error');return;}
+  ['s-name','s-type','s-set'].forEach(recHist);
+  const type=document.getElementById('s-type').value.trim()||'Other';
+  const price=parseFloat(document.getElementById('s-price').value)||0;
+  const qty=parseInt(document.getElementById('s-qty').value)||1;
+  const set=document.getElementById('s-set').value.trim();
+  if(/slab|raw/i.test(type)){
+    db.cards.push({id:Date.now(),name,set,rarity:type,cond:type,qty,cost:price});
+    save();renderAll();
+    ['s-name','s-type','s-set','s-price'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('s-qty').value='1';
+    showAlert('seal-alert','Routed to Slab/Raw!');
+    return;
+  }
+  db.sealed.push({id:Date.now(),name,type,set,qty,price,date:document.getElementById('s-date').value||today()});
+  save();renderAll();
+  ['s-name','s-type','s-set','s-price'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('s-qty').value='1';showAlert('seal-alert','Added to stash!');
+}
+function deleteSealed(id){db.sealed=db.sealed.filter(s=>s.id!==id&&s.id!==+id);save();renderAll();}
+function adjustQty(id,delta){
+  const item=db.sealed.find(s=>s.id===id||s.id===+id);
+  if(!item)return;
+  item.qty=Math.max(0,item.qty+delta);
+  if(item.qty===0){db.sealed=db.sealed.filter(s=>s.id!==id&&s.id!==+id);save();renderAll();return;}
+  save();
+  // update qty input and total cell in place
+  const rows=document.querySelectorAll('#seal-table tr');
+  rows.forEach(row=>{
+    const qtyInp=row.querySelector('input.qty-val');
+    if(qtyInp&&qtyInp.getAttribute('onchange')&&qtyInp.getAttribute('onchange').includes(String(id))){
+      qtyInp.value=item.qty;
+      const totalCell=row.cells[7];
+      if(totalCell)totalCell.textContent=fmt(item.price*item.qty);
+    }
+  });
+  renderDashboard();
+}
+function updateSealed(id,field,value){
+  const item=db.sealed.find(s=>s.id===id||s.id===+id);
+  if(!item)return;
+  item[field]=value;
+  save();
+  // re-render only the total cell without full re-render to avoid losing focus
+  if(field==='price'||field==='qty'){
+    const rows=document.querySelectorAll('#seal-table tr');
+    rows.forEach(row=>{
+      const inp=row.querySelector('input[onchange*="\'price\'"]');
+      if(inp&&inp.getAttribute('onchange').includes(String(id))){
+        const totalCell=row.cells[7];
+        if(totalCell)totalCell.textContent=fmt(item.price*item.qty);
+      }
+    });
+    renderDashboard();
+  }
+}
+// ── DONUT CHARTS ──
+const DONUT_COLORS=['#f6c94e','#5dca97','#378add','#9b8ddd','#e24b4a','#e8a020','#5daaff','#c97bca','#72d9c0','#f09050','#a0c864','#e06070'];
+
+// Store arc metadata per canvas for hit-testing
+const _donutMeta={};
+
+function drawDonut(canvasId, groups, hoveredIdx=-1){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+  const isMoney=canvasId==='donut-spend';
+  // Inner donut ring — leave room for callout labels
+  const R=Math.min(W,H)/2-38,r=R*0.56;
+  ctx.clearRect(0,0,W,H);
+  const total=groups.reduce((a,g)=>a+g.value,0);
+  if(total===0){
+    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=R-r;ctx.stroke();
+    _donutMeta[canvasId]={groups:[],cx,cy,R,r,total:0};
+    return;
+  }
+  const gap=groups.length>1?0.025:0;
+  let startAngle=-Math.PI/2;
+  const arcs=[];
+
+  // First pass: draw slices
+  groups.forEach((g,i)=>{
+    const slice=Math.max(0,(g.value/total)*Math.PI*2-gap);
+    const isHovered=i===hoveredIdx;
+    const expandR=isHovered?R+5:R;
+    const expandr=isHovered?r-2:r;
+    ctx.beginPath();
+    ctx.arc(cx,cy,expandR,startAngle,startAngle+slice);
+    ctx.arc(cx,cy,expandr,startAngle+slice,startAngle,true);
+    ctx.closePath();
+    const col=DONUT_COLORS[i%DONUT_COLORS.length];
+    ctx.fillStyle=isHovered?col:(hoveredIdx===-1?col:col+'70');
+    ctx.fill();
+    const midAngle=startAngle+slice/2;
+    arcs.push({startAngle,endAngle:startAngle+slice,midAngle,color:col,label:g.label,value:g.value,idx:i,pct:(g.value/total)*100});
+    startAngle+=slice+gap;
+  });
+
+  // Second pass: draw labels
+  ctx.textBaseline='middle';
+  arcs.forEach((arc,i)=>{
+    const {midAngle,pct,color,value,label}=arc;
+    const isHovered=i===hoveredIdx;
+    const sliceAngle=arc.endAngle-arc.startAngle;
+    const midR=(R+r)/2;
+    const innerX=cx+Math.cos(midAngle)*midR;
+    const innerY=cy+Math.sin(midAngle)*midR;
+    const alpha=hoveredIdx===-1||isHovered?1:0.4;
+
+    // Format value string
+    const valStr=isMoney
+      ?(value>=1000?'$'+(value/1000).toFixed(1)+'k':'$'+Math.round(value))
+      :Math.round(value)+'';
+
+    if(pct>=8&&sliceAngle>0.5){
+      // Large enough: draw count/$ inside slice
+      ctx.save();
+      ctx.globalAlpha=alpha;
+      ctx.font=`600 11px 'DM Mono',monospace`;
+      ctx.fillStyle='rgba(0,0,0,0.7)';
+      ctx.textAlign='center';
+      ctx.fillText(valStr,innerX+1,innerY+1);
+      ctx.fillStyle='#ffffff';
+      ctx.fillText(valStr,innerX,innerY);
+      ctx.restore();
+    } else if(pct>=3){
+      // Smaller: draw callout line + label outside
+      const lineStart=R+4;
+      const lineEnd=R+18;
+      const labelR=R+24;
+      const x1=cx+Math.cos(midAngle)*lineStart;
+      const y1=cy+Math.sin(midAngle)*lineStart;
+      const x2=cx+Math.cos(midAngle)*lineEnd;
+      const y2=cy+Math.sin(midAngle)*lineEnd;
+      const xL=cx+Math.cos(midAngle)*labelR;
+      const yL=cy+Math.sin(midAngle)*labelR;
+      const isRight=Math.cos(midAngle)>=0;
+      const xEnd=xL+(isRight?8:-8);
+
+      ctx.save();
+      ctx.globalAlpha=alpha;
+      // Tick line
+      ctx.beginPath();
+      ctx.moveTo(x1,y1);
+      ctx.lineTo(x2,y2);
+      ctx.lineTo(xEnd,y2+(yL-y2));
+      ctx.strokeStyle=color;
+      ctx.lineWidth=1;
+      ctx.stroke();
+      // Label text
+      ctx.font=`500 10px 'DM Mono',monospace`;
+      ctx.fillStyle=isHovered?color:'#9e9d95';
+      ctx.textAlign=isRight?'left':'right';
+      ctx.fillText(valStr,xEnd+(isRight?2:-2),y2+(yL-y2));
+      ctx.restore();
+    }
+  });
+
+  _donutMeta[canvasId]={groups,arcs,cx,cy,R,r,total};
+}
+
+function hitTestDonut(canvasId, mx, my){
+  const meta=_donutMeta[canvasId];
+  if(!meta||!meta.arcs)return -1;
+  const {cx,cy,R,r,arcs}=meta;
+  const dx=mx-cx,dy=my-cy;
+  const dist=Math.sqrt(dx*dx+dy*dy);
+  if(dist<r-6||dist>R+12)return -1;
+  let angle=Math.atan2(dy,dx);
+  if(angle<-Math.PI/2)angle+=Math.PI*2;
+  for(const arc of arcs){
+    let sa=arc.startAngle,ea=arc.endAngle;
+    if(sa<-Math.PI/2){sa+=Math.PI*2;ea+=Math.PI*2;}
+    if(angle>=sa&&angle<=ea)return arc.idx;
+  }
+  return -1;
+}
+
+// Shared tooltip element
+let _donutTooltip=null;
+function getDonutTooltip(){
+  if(!_donutTooltip){
+    _donutTooltip=document.createElement('div');
+    _donutTooltip.style.cssText='position:fixed;background:#1e1e2a;border:1px solid rgba(255,255,255,0.14);border-radius:8px;padding:8px 12px;font-family:\'DM Mono\',monospace;font-size:12px;color:#f0efe8;pointer-events:none;z-index:9999;display:none;box-shadow:0 4px 16px rgba(0,0,0,0.5);white-space:nowrap;';
+    document.body.appendChild(_donutTooltip);
+  }
+  return _donutTooltip;
+}
+
+function showDonutTooltip(e, label, value, pct, color){
+  const tt=getDonutTooltip();
+  tt.innerHTML=`<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div style="width:8px;height:8px;border-radius:2px;background:${color}"></div><span style="color:#9e9d95">${label}</span></div><div style="color:#f6c94e">${value}</div><div style="color:#5c5b57">${pct}% of total</div>`;
+  tt.style.display='block';
+  moveDonutTooltip(e);
+}
+function moveDonutTooltip(e){
+  const tt=getDonutTooltip();
+  const x=e.clientX+14,y=e.clientY-10;
+  tt.style.left=Math.min(x,window.innerWidth-tt.offsetWidth-10)+'px';
+  tt.style.top=Math.max(10,y)+'px';
+}
+function hideDonutTooltip(){const tt=getDonutTooltip();tt.style.display='none';}
+
+function initDonutHover(canvasId, isMoney, centerLabelId, centerTotalId){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas||canvas._hoverReady)return;
+  canvas._hoverReady=true;
+  canvas.style.cursor='default';
+
+  canvas.addEventListener('mousemove',e=>{
+    const rect=canvas.getBoundingClientRect();
+    const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    const meta=_donutMeta[canvasId];
+    if(!meta)return;
+    const idx=hitTestDonut(canvasId,mx,my);
+    if(idx!==canvas._lastHover){
+      canvas._lastHover=idx;
+      drawDonut(canvasId,meta.groups,idx);
+      if(idx>=0){
+        canvas.style.cursor='pointer';
+        const g=meta.groups[idx];
+        const pct=((g.value/meta.total)*100).toFixed(1);
+        const valStr=isMoney?fmt(g.value):Math.round(g.value)+' items';
+        const color=DONUT_COLORS[idx%DONUT_COLORS.length];
+        // Update center label
+        const labelEl=document.getElementById(centerLabelId);
+        const totalEl=document.getElementById(centerTotalId);
+        if(labelEl)labelEl.textContent=g.label.length>12?g.label.slice(0,11)+'…':g.label;
+        if(totalEl){totalEl.textContent=isMoney?('$'+(g.value>=1000?(g.value/1000).toFixed(1)+'k':Math.round(g.value).toLocaleString())):Math.round(g.value);totalEl.style.color=color;}
+        showDonutTooltip(e,g.label,valStr,pct,color);
+      } else {
+        canvas.style.cursor='default';
+        hideDonutTooltip();
+        // Restore center defaults
+        const labelEl=document.getElementById(centerLabelId);
+        const totalEl=document.getElementById(centerTotalId);
+        const meta2=_donutMeta[canvasId];
+        if(labelEl)labelEl.textContent=isMoney?'Total':'Items';
+        if(totalEl&&meta2){
+          const tot=meta2.total;
+          totalEl.textContent=isMoney?('$'+Math.round(tot).toLocaleString()):Math.round(tot);
+          totalEl.style.color='#f0efe8';
+        }
+      }
+    } else if(idx>=0){
+      moveDonutTooltip(e);
+    }
+  });
+  canvas.addEventListener('mouseleave',()=>{
+    canvas._lastHover=-1;
+    const meta=_donutMeta[canvasId];
+    if(meta)drawDonut(canvasId,meta.groups,-1);
+    hideDonutTooltip();
+    const labelEl=document.getElementById(centerLabelId);
+    const totalEl=document.getElementById(centerTotalId);
+    const meta2=_donutMeta[canvasId];
+    if(labelEl)labelEl.textContent=isMoney?'Total':'Items';
+    if(totalEl&&meta2){totalEl.textContent=isMoney?('$'+Math.round(meta2.total).toLocaleString()):Math.round(meta2.total);totalEl.style.color='#f0efe8';}
+  });
+}
+
+function renderSealedDonuts(){
+  const typeMap={};
+  db.sealed.forEach(s=>{
+    const t=s.type||'Other';
+    if(!typeMap[t])typeMap[t]={spend:0,count:0};
+    typeMap[t].spend+=s.price*s.qty;
+    typeMap[t].count+=s.qty;
+  });
+  const sorted=Object.entries(typeMap).sort((a,b)=>b[1].spend-a[1].spend);
+  const spendGroups=sorted.map(([t,v])=>({label:t,value:v.spend}));
+  const countGroups=sorted.map(([t,v])=>({label:t,value:v.count}));
+
+  drawDonut('donut-spend',spendGroups);
+  drawDonut('donut-count',countGroups);
+
+  const totalSpend=spendGroups.reduce((a,g)=>a+g.value,0);
+  const totalCount=countGroups.reduce((a,g)=>a+g.value,0);
+  const spendEl=document.getElementById('donut-spend-total');
+  if(spendEl){spendEl.textContent='$'+Math.round(totalSpend).toLocaleString();spendEl.style.color='#f0efe8';}
+  const countEl=document.getElementById('donut-count-total');
+  if(countEl){countEl.textContent=totalCount;countEl.style.color='#f0efe8';}
+
+  // Wire hover (only once per canvas)
+  initDonutHover('donut-spend',true,'donut-spend-label','donut-spend-total');
+  initDonutHover('donut-count',false,'donut-count-label','donut-count-total');
+
+  const mkLegend=(containerId,groups,totalVal,isMoney)=>{
+    const el=document.getElementById(containerId);
+    if(!el)return;
+    el.innerHTML=groups.slice(0,10).map((g,i)=>{
+      const pct=totalVal>0?((g.value/totalVal)*100).toFixed(1):0;
+      const valStr=isMoney?('$'+(g.value>=1000?(g.value/1000).toFixed(1)+'k':Math.round(g.value))):Math.round(g.value);
+      return `<div style="display:flex;align-items:center;gap:8px;font-size:11px">
+        <div style="width:10px;height:10px;border-radius:2px;flex-shrink:0;background:${DONUT_COLORS[i%DONUT_COLORS.length]}"></div>
+        <span style="flex:1;color:#9e9d95;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${g.label}">${g.label}</span>
+        <span style="font-family:'DM Mono',monospace;color:#f0efe8">${valStr}</span>
+        <span style="font-family:'DM Mono',monospace;color:#5c5b57;min-width:36px;text-align:right">${pct}%</span>
+      </div>`;
+    }).join('');
+  };
+  mkLegend('donut-spend-legend',spendGroups,totalSpend,true);
+  mkLegend('donut-count-legend',countGroups,totalCount,false);
+}
+let _sealSort={col:'',dir:1};
+function setSealedSort(col){
+  if(_sealSort.col===col){_sealSort.dir*=-1;}
+  else{_sealSort={col,dir:1};}
+  renderSealed();
+}
+
+function renderSealed(){
+  const search=(document.getElementById('seal-search')||{value:''}).value.toLowerCase();
+  const typeF=(document.getElementById('seal-filter-type')||{value:''}).value;
+  const setF=(document.getElementById('seal-filter-set')||{value:''}).value;
+  const daysF=parseInt((document.getElementById('seal-filter-date')||{value:''}).value)||0;
+
+  // Populate type dropdown
+  const typeEl=document.getElementById('seal-filter-type');
+  if(typeEl){
+    const cur=typeEl.value;
+    const types=[...new Set(db.sealed.map(s=>s.type).filter(Boolean))].sort();
+    typeEl.innerHTML='<option value="">All types</option>'+types.map(t=>`<option value="${t}"${t===cur?' selected':''}>${t}</option>`).join('');
+  }
+  // Populate set dropdown
+  const setEl=document.getElementById('seal-filter-set');
+  if(setEl){
+    const cur=setEl.value;
+    const sets=[...new Set(db.sealed.map(s=>s.set).filter(Boolean))].sort();
+    setEl.innerHTML='<option value="">All sets</option>'+sets.map(s=>`<option value="${s}"${s===cur?' selected':''}>${s}</option>`).join('');
+  }
+
+  const now=new Date();
+  let rows=db.sealed.filter(s=>{
+    if(search&&!s.name.toLowerCase().includes(search)&&!(s.set||'').toLowerCase().includes(search)&&!(s.type||'').toLowerCase().includes(search))return false;
+    if(typeF&&s.type!==typeF)return false;
+    if(setF&&s.set!==setF)return false;
+    if(daysF&&s.date){const d=new Date(s.date);if((now-d)/(1000*60*60*24)>daysF)return false;}
+    return true;
+  });
+
+  // Sort
+  if(_sealSort.col){
+    rows=[...rows].sort((a,b)=>{
+      let av,bv;
+      if(_sealSort.col==='total'){av=a.price*a.qty;bv=b.price*b.qty;}
+      else if(_sealSort.col==='market'){av=a.market||0;bv=b.market||0;}
+      else if(_sealSort.col==='gainloss'){av=(a.market||0)*a.qty-a.price*a.qty;bv=(b.market||0)*b.qty-b.price*b.qty;}
+      else if(_sealSort.col==='pnlunit'){av=(a.market||0)-a.price;bv=(b.market||0)-b.price;}
+      else if(_sealSort.col==='price'||_sealSort.col==='qty'){av=a[_sealSort.col];bv=b[_sealSort.col];}
+      else if(_sealSort.col==='date'){av=a.date||'';bv=b.date||'';}
+      else{av=(a[_sealSort.col]||'').toLowerCase();bv=(b[_sealSort.col]||'').toLowerCase();}
+      if(av<bv)return -1*_sealSort.dir;
+      if(av>bv)return 1*_sealSort.dir;
+      return 0;
+    });
+  }
+
+  // Update sort arrow indicators
+  ['name','type','set','date','price','qty','total','market','pnlunit','gainloss'].forEach(col=>{
+    const el=document.getElementById('seal-sort-'+col);
+    const th=el&&el.parentElement;
+    if(!el)return;
+    el.textContent=_sealSort.col===col?(_sealSort.dir===1?'↑':'↓'):'↕';
+    if(th){th.classList.toggle('sort-asc',_sealSort.col===col&&_sealSort.dir===1);th.classList.toggle('sort-desc',_sealSort.col===col&&_sealSort.dir===-1);}
+  });
+
+  document.getElementById('s-total-qty').textContent=db.sealed.reduce((a,s)=>a+s.qty,0);
+  document.getElementById('s-total-spent').textContent=fmt(db.sealed.reduce((a,s)=>a+s.qty*s.price,0));
+  document.getElementById('s-unique-sets').textContent=new Set(db.sealed.map(s=>s.set).filter(Boolean)).size;
+  const countEl=document.getElementById('seal-filtered-count');
+  if(countEl)countEl.textContent=rows.length;
+
+  const tbody=document.getElementById('seal-table');
+  if(!rows.length){tbody.innerHTML='<tr class="empty-row"><td colspan="12">No items match.</td></tr>';return;}
+  tbody.innerHTML=rows.map(s=>{
+    const mkt=s.market||0;
+    const totalCost=s.price*s.qty;
+    const totalMkt=mkt*s.qty;
+    const gl=mkt?totalMkt-totalCost:null;
+    const glClass=gl===null?'':gl>=0?'profit-pos':'profit-neg';
+    const glText=gl===null?'—':(gl>=0?'+':'')+fmt(gl);
+    const pnlUnit=mkt?mkt-s.price:null;
+    const pnlClass=pnlUnit===null?'':pnlUnit>=0?'profit-pos':'profit-neg';
+    const pnlText=pnlUnit===null?'—':(pnlUnit>=0?'+':'')+fmt(pnlUnit);
+    const tcgQuery=encodeURIComponent(s.name);
+    const tcgUrl=`https://www.tcgplayer.com/search/all/product?q=${tcgQuery}`;
+    return `<tr>
+    <td><input type="checkbox" class="seal-check" data-id="${s.id}" onchange="updateMergeBtn()" style="cursor:pointer;accent-color:var(--accent)"></td>
+    <td><input class="cell-input" data-col="name-sealed" value="${s.name}" onchange="updateSealed(${s.id},'name',this.value)" onblur="updateSealed(${s.id},'name',this.value)"></td>
+    <td><input class="cell-input dim" data-col="type-sealed" value="${s.type||''}" onchange="updateSealed(${s.id},'type',this.value)" onblur="updateSealed(${s.id},'type',this.value)" list="seal-types-list"></td>
+    <td><input class="cell-input dim" data-col="set-sealed" value="${s.set||''}" placeholder="—" style="min-width:80px" onchange="updateSealed(${s.id},'set',this.value)" onblur="updateSealed(${s.id},'set',this.value)"></td>
+    <td><input class="cell-input dimmer mono" type="date" value="${s.date||''}" onchange="updateSealed(${s.id},'date',this.value)"></td>
+    <td><div class="price-wrap"><span class="price-sym">$</span><input class="cell-input mono" type="number" min="0" step="0.01" value="${s.price||''}" placeholder="0.00" onchange="updateSealed(${s.id},'price',parseFloat(this.value)||0)"></div></td>
+    <td><div class="qty-stepper"><button class="qty-btn" onclick="adjustQty(${s.id},-1)">−</button><input class="qty-val" type="number" min="0" value="${s.qty}" onchange="updateSealed(${s.id},'qty',Math.max(0,parseInt(this.value)||0))" onblur="if(parseInt(this.value)<=0){deleteSealed(${s.id})}"><button class="qty-btn" onclick="adjustQty(${s.id},1)">+</button></div></td>
+    <td class="mono" id="seal-total-${s.id}">${fmt(s.price*s.qty)}</td>
+    <td><div class="price-wrap"><span class="price-sym" style="color:var(--blue)">$</span><input class="cell-input mono" type="number" min="0" step="0.01" value="${s.market||''}" placeholder="0.00" onchange="updateSealed(${s.id},'market',parseFloat(this.value)||0);renderSealed()" onblur="updateSealed(${s.id},'market',parseFloat(this.value)||0);renderSealed()"><a href="${tcgUrl}" target="_blank" title="Look up on TCGPlayer" style="font-size:11px;color:var(--blue);text-decoration:none;margin-left:4px;opacity:0.7;flex-shrink:0" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">↗</a></div></td>
+    <td class="${pnlClass} mono">${pnlText}</td>
+    <td class="${glClass} mono" id="seal-gl-${s.id}">${glText}</td>
+    <td style="display:flex;gap:5px;align-items:center"><button class="inline-btn inline-sell" onclick="openSellModal(${s.id})">Sell</button><button class="inline-btn inline-rip" onclick="openRipModal(${s.id})">Rip</button><button class="delete-btn" onclick="deleteSealed(${s.id})">✕</button></td>
+  </tr>`;
+  }).join('');
+  setTimeout(()=>initCB(),0);
+  renderSealedDonuts();
+  if(!document.getElementById('seal-types-list')){
+    const dl=document.createElement('datalist');dl.id='seal-types-list';
+    ['Booster Box','ETB','Booster Bundle','UPC','3-Pack Blister','2-Pack Blister','1-Pack Sleeved','SPC','Tin','Collection Box','Poster Box','Costco Box','Other'].forEach(t=>{const o=document.createElement('option');o.value=t;dl.appendChild(o);});
+    document.body.appendChild(dl);
+  }
+}
+function clearSealedFilters(){
+  ['seal-search','seal-filter-type','seal-filter-set','seal-filter-date'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.value='';
+  });
+  _sealSort={col:'',dir:1};
+  renderSealed();
+}
+function importSealed(input){handleFile(input,rows=>{
+  rows.forEach(r=>{
+    if(!r.name&&!r[0])return;
+    const type=r.type||r[1]||'Other';
+    if(/slab|raw/i.test(type)){
+      db.cards.push({id:Date.now()+Math.random(),name:r.name||r[0]||'',set:r.set||r[2]||'',rarity:type,cond:type,qty:parseInt(r.qty||r[3])||1,cost:parseFloat(r.price||r[4])||0});
+    } else {
+      db.sealed.push({id:Date.now()+Math.random(),name:r.name||r[0]||'',type,set:r.set||r[2]||'',qty:parseInt(r.qty||r[3])||1,price:parseFloat(r.price||r[4])||0,date:r.date||r[5]||today()});
+    }
+  });
+  save();renderAll();showAlert('seal-alert',`Imported ${rows.length} items!`);
+});}
+
+// ── PACKS ──
+function addPack(){
+  const set=document.getElementById('p-set').value.trim();
+  if(!set){showAlert('pk-alert','Set name is required.','error');return;}
+  ['p-set','p-notes'].forEach(recHist);
+  db.packs.push({id:Date.now(),set,count:parseInt(document.getElementById('p-count').value)||1,price:parseFloat(document.getElementById('p-price').value)||0,date:document.getElementById('p-date').value||today(),notes:document.getElementById('p-notes').value.trim()});
+  save();renderAll();
+  ['p-set','p-notes','p-price'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('p-count').value='1';showAlert('pk-alert','Opening logged!');
+}
+function deletePack(id){db.packs=db.packs.filter(p=>p.id!==id&&p.id!==+id);save();renderAll();}
+function updatePack(id,field,value){
+  const item=db.packs.find(p=>p.id===id||p.id===+id);
+  if(!item)return;
+  item[field]=value;
+  save();
+  if(field==='count'||field==='price'){
+    const el=document.getElementById('pk-total-'+id);
+    if(el)el.textContent=fmt(item.count*item.price);
+  }
+  renderDashboard();
+}
+function renderPacks(){
+  const tot=db.packs.reduce((a,p)=>a+p.count,0),spent=db.packs.reduce((a,p)=>a+p.count*p.price,0);
+  document.getElementById('pk-total').textContent=fmtN(tot);
+  document.getElementById('pk-spent').textContent=fmt(spent);
+  document.getElementById('pk-avg').textContent=tot?fmt(spent/tot):'—';
+  const tbody=document.getElementById('pk-table');
+  if(!db.packs.length){tbody.innerHTML='<tr class="empty-row"><td colspan="7">No openings logged yet.</td></tr>';return;}
+  tbody.innerHTML=[...db.packs].reverse().map(p=>`<tr>
+    <td><input class="cell-input" data-col="set-packs" value="${p.set||''}" onchange="updatePack(${p.id},'set',this.value)" onblur="updatePack(${p.id},'set',this.value)" list="pk-set-list"></td>
+    <td><input class="cell-input mono" type="number" min="1" value="${p.count}" onchange="updatePack(${p.id},'count',parseInt(this.value)||1)"></td>
+    <td><input class="cell-input dimmer mono" type="date" value="${p.date||''}" onchange="updatePack(${p.id},'date',this.value)"></td>
+    <td><input class="cell-input mono" type="number" min="0" step="0.01" value="${p.price||''}" placeholder="0.00" onchange="updatePack(${p.id},'price',parseFloat(this.value)||0)"></td>
+    <td class="mono" id="pk-total-${p.id}">${fmt(p.count*p.price)}</td>
+    <td><input class="cell-input dim" data-col="notes-packs" value="${p.notes||''}" placeholder="—" onchange="updatePack(${p.id},'notes',this.value)" onblur="updatePack(${p.id},'notes',this.value)"></td>
+    <td style="display:flex;gap:5px;align-items:center"><button class="inline-btn inline-rip" onclick="openRipSellModal(${p.id})">Rip</button><button class="delete-btn" onclick="deletePack(${p.id})">✕</button></td>
+  </tr>`).join('');
+  setTimeout(()=>initCB(),0);
+  if(!document.getElementById('pk-set-list')){
+    const dl=document.createElement('datalist');dl.id='pk-set-list';
+    SETS.forEach(v=>{const o=document.createElement('option');o.value=v;dl.appendChild(o);});
+    document.body.appendChild(dl);
+  }
+}
+function importPacks(input){handleFile(input,rows=>{rows.forEach(r=>{if(!r.set&&!r[0])return;db.packs.push({id:Date.now()+Math.random(),set:r.set||r[0]||'',count:parseInt(r.count||r[1])||1,date:r.date||r[2]||today(),price:parseFloat(r.price||r[3])||0,notes:r.notes||r[4]||''});});save();renderAll();showAlert('pk-alert',`Imported ${rows.length} openings!`);});}
+
+// ── SALES ──
+function addSale(){
+  const name=document.getElementById('sl-name').value.trim();
+  if(!name){showAlert('sal-alert','Item name is required.','error');return;}
+  ['sl-name','sl-cat','sl-plat','sl-notes'].forEach(recHist);
+  const cost=parseFloat(document.getElementById('sl-cost').value)||0,sold=parseFloat(document.getElementById('sl-sold').value)||0;
+  db.sales.push({id:Date.now(),name,cat:document.getElementById('sl-cat').value.trim()||'Single Card',cost,sold,profit:sold-cost,platform:document.getElementById('sl-plat').value.trim()||'Other',date:document.getElementById('sl-date').value||today(),notes:document.getElementById('sl-notes').value.trim()});
+  save();renderAll();
+  ['sl-name','sl-cat','sl-cost','sl-sold','sl-plat','sl-notes'].forEach(id=>document.getElementById(id).value='');
+  showAlert('sal-alert','Sale logged!');
+}
+function deleteSale(id){db.sales=db.sales.filter(s=>s.id!==id&&s.id!==+id);save();renderAll();}
+function updateSale(id,field,value){
+  const item=db.sales.find(s=>s.id===id||s.id===+id);
+  if(!item)return;
+  item[field]=value;
+  if(field==='cost'||field==='sold'){
+    item.profit=item.sold-item.cost;
+    const el=document.getElementById('sal-profit-'+id);
+    if(el){el.textContent=(item.profit>=0?'+':'')+fmt(item.profit);el.className=(item.profit>=0?'profit-pos':'profit-neg')+' mono';}
+  }
+  save();
+  renderDashboard();
+}
+function renderSales(filter=''){
+  const f=filter.toLowerCase(),rows=db.sales.filter(s=>!f||s.name.toLowerCase().includes(f));
+  const rev=db.sales.reduce((a,s)=>a+s.sold,0),cost=db.sales.reduce((a,s)=>a+s.cost,0),profit=db.sales.reduce((a,s)=>a+s.profit,0);
+  document.getElementById('sal-rev').textContent=fmt(rev);
+  document.getElementById('sal-cost-el').textContent=fmt(cost);
+  const pe=document.getElementById('sal-profit');pe.textContent=fmt(profit);pe.className='metric-value '+(profit>=0?'metric-up':'metric-down');
+  document.getElementById('sal-count').textContent=db.sales.length;
+  const tbody=document.getElementById('sal-table');
+  if(!rows.length){tbody.innerHTML='<tr class="empty-row"><td colspan="8">No sales logged yet.</td></tr>';return;}
+  tbody.innerHTML=[...rows].reverse().map(s=>`<tr>
+    <td><input class="cell-input" data-col="name-sales" value="${s.name||''}" onchange="updateSale(${s.id},'name',this.value)" onblur="updateSale(${s.id},'name',this.value)"></td>
+    <td><input class="cell-input dim" data-col="cat-sales" value="${s.cat||''}" onchange="updateSale(${s.id},'cat',this.value)" onblur="updateSale(${s.id},'cat',this.value)" list="sal-cat-list"></td>
+    <td><input class="cell-input dim" data-col="platform-sales" value="${s.platform||''}" onchange="updateSale(${s.id},'platform',this.value)" onblur="updateSale(${s.id},'platform',this.value)" list="sal-plat-list"></td>
+    <td><input class="cell-input dimmer mono" type="date" value="${s.date||''}" onchange="updateSale(${s.id},'date',this.value)"></td>
+    <td><input class="cell-input mono" type="number" min="0" step="0.01" value="${s.cost||''}" placeholder="0.00" onchange="updateSale(${s.id},'cost',parseFloat(this.value)||0)"></td>
+    <td><input class="cell-input mono" type="number" min="0" step="0.01" value="${s.sold||''}" placeholder="0.00" onchange="updateSale(${s.id},'sold',parseFloat(this.value)||0)"></td>
+    <td class="${pClass(s.profit)} mono" id="sal-profit-${s.id}">${s.profit>=0?'+':''}${fmt(s.profit)}</td>
+    <td><button class="delete-btn" onclick="deleteSale(${s.id})">✕</button></td>
+  </tr>`).join('');
+  setTimeout(()=>initCB(),0);
+  if(!document.getElementById('sal-cat-list')){
+    const dl=document.createElement('datalist');dl.id='sal-cat-list';
+    ['Single Card','Sealed Pack','Card Lot','Graded Card','Bundle / Box','Other'].forEach(v=>{const o=document.createElement('option');o.value=v;dl.appendChild(o);});
+    document.body.appendChild(dl);
+  }
+  if(!document.getElementById('sal-plat-list')){
+    const dl=document.createElement('datalist');dl.id='sal-plat-list';
+    ['eBay','TCGPlayer','Facebook Marketplace','Local / LGS','Friend','Mercari','StockX','Other'].forEach(v=>{const o=document.createElement('option');o.value=v;dl.appendChild(o);});
+    document.body.appendChild(dl);
+  }
+  bars('sal-plat-bars',db.sales,s=>s.platform,s=>s.sold);
+  bars('sal-cat-bars',db.sales,s=>s.cat,s=>s.profit);
+}
+function importSales(input){handleFile(input,rows=>{rows.forEach(r=>{if(!r.name&&!r[0])return;const cost=parseFloat(r.cost||r[4])||0,sold=parseFloat(r.sold||r[5])||0;db.sales.push({id:Date.now()+Math.random(),name:r.name||r[0]||'',cat:r.category||r[1]||'Single Card',platform:r.platform||r[2]||'Other',date:r.date||r[3]||today(),cost,sold,profit:sold-cost,notes:r.notes||r[6]||''});});save();renderAll();showAlert('sal-alert',`Imported ${rows.length} sales!`);});}
+
+// ── DASHBOARD ──
+function renderDashboard(){
+  const tc=db.cards.reduce((a,c)=>a+c.qty,0),ts=db.sealed.reduce((a,s)=>a+s.qty,0);
+  const spent=db.packs.reduce((a,p)=>a+p.count*p.price,0)+db.sealed.reduce((a,s)=>a+s.qty*s.price,0);
+  const profit=db.sales.reduce((a,s)=>a+s.profit,0);
+  document.getElementById('m-cards').textContent=fmtN(tc);
+  document.getElementById('m-sealed').textContent=fmtN(ts);
+  document.getElementById('m-spent').textContent=fmt(spent);
+  const pe=document.getElementById('m-profit');pe.textContent=fmt(profit);pe.className='metric-value '+(profit>=0?'metric-up':'metric-down');
+  document.getElementById('sb-cards').textContent=tc;
+  document.getElementById('sb-sealed').textContent=ts;
+  // Combine sealed + pack spending by set
+  const setSpend=[];
+  db.sealed.forEach(s=>{ if(s.set||s.name) setSpend.push({set:s.set||s.name, val:s.qty*s.price}); });
+  db.packs.forEach(p=>{ if(p.set) setSpend.push({set:p.set, val:p.count*p.price}); });
+  bars('dash-set-bars', setSpend, x=>x.set, x=>x.val);
+  bars('dash-rarity-bars',db.cards,c=>c.rarity,c=>c.qty,true);
+  bars('dash-platform-bars',db.sales,s=>s.platform,s=>s.sold);
+  const re=document.getElementById('dash-recent-sales');
+  if(!db.sales.length){re.innerHTML='<p style="color:var(--text3);font-size:13px">No sales yet.</p>';return;}
+  re.innerHTML=[...db.sales].reverse().slice(0,5).map(s=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px">${s.name}</span><span class="${pClass(s.profit)} mono" style="font-size:13px">${s.profit>=0?'+':''}${fmt(s.profit)}</span></div>`).join('');
+}
+
+function bars(elId,data,kFn,vFn,isCount=false){
+  const el=document.getElementById(elId);
+  if(!data.length){el.innerHTML='<p style="color:var(--text3);font-size:13px">No data yet.</p>';return;}
+  const g={};data.forEach(d=>{const k=kFn(d);g[k]=(g[k]||0)+vFn(d);});
+  const sorted=Object.entries(g).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const max=sorted[0][1];
+  el.innerHTML=sorted.map(([k,v])=>`<div class="mini-bar-row"><div class="mini-bar-label" title="${k}">${k}</div><div class="mini-bar-track"><div class="mini-bar-fill" style="width:${Math.max(4,(v/max)*100).toFixed(1)}%"></div></div><div class="mini-bar-val">${isCount?v:fmt(v)}</div></div>`).join('');
+}
+
+// ── FILE IMPORT ──
+function handleFile(input,cb){
+  const file=input.files[0];if(!file)return;
+  const ext=file.name.split('.').pop().toLowerCase(),reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      let rows=[];
+      if(ext==='csv'){
+        const lines=e.target.result.split('\n').filter(l=>l.trim());
+        const hdrs=lines[0].split(',').map(h=>h.trim().toLowerCase().replace(/[^a-z0-9]/g,''));
+        rows=lines.slice(1).map(line=>{const vals=line.split(',');const obj={};hdrs.forEach((h,i)=>{obj[h]=(vals[i]||'').trim().replace(/^"|"$/g,'');});return obj;});
+      }else{
+        const wb=XLSX.read(e.target.result,{type:'binary'}),ws=wb.Sheets[wb.SheetNames[0]];
+        rows=XLSX.utils.sheet_to_json(ws,{defval:''}).map(r=>{const obj={};Object.keys(r).forEach(k=>{obj[k.toLowerCase().replace(/[^a-z0-9]/g,'')]=r[k];});return obj;});
+      }
+      cb(rows.filter(r=>Object.values(r).some(v=>v)));
+    }catch(err){alert('Import failed: '+err.message);}
+    input.value='';
+  };
+  if(ext==='csv')reader.readAsText(file);else reader.readAsBinaryString(file);
+}
+
+// ── COLUMN RESIZE ──
+function initColResize(){
+  document.querySelectorAll('th .col-resize').forEach(handle=>{
+    if(handle._resizeReady)return;
+    handle._resizeReady=true;
+    handle.addEventListener('mousedown', e=>{
+      e.preventDefault();
+      const th=handle.parentElement;
+      const table=th.closest('table');
+      const startX=e.clientX;
+      // snapshot all current rendered widths, then switch to fixed layout
+      const ths=Array.from(table.querySelectorAll('thead th'));
+      ths.forEach(h=>{ h.style.width=h.getBoundingClientRect().width+'px'; });
+      table.style.tableLayout='fixed';
+      table.style.width=table.getBoundingClientRect().width+'px';
+      const startW=th.getBoundingClientRect().width;
+      th.classList.add('resizing');
+      const onMove=e=>{
+        const newW=Math.max(40, startW+(e.clientX-startX));
+        th.style.width=newW+'px';
+      };
+      const onUp=()=>{
+        th.classList.remove('resizing');
+        document.removeEventListener('mousemove',onMove);
+        document.removeEventListener('mouseup',onUp);
+      };
+      document.addEventListener('mousemove',onMove);
+      document.addEventListener('mouseup',onUp);
+    });
+  });
+}
+
+function renderAll(){
+  renderDashboard();renderCollection();renderSealed();renderPacks();renderSales();
+  setTimeout(initColResize,0);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const t=today();
+  ['s-date','p-date','sl-date'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=t;});
+  initCB();
+  renderAll();
+});
+
+// ── ENTER TO SAVE on inline cell inputs ──
+document.addEventListener('keydown', e=>{
+  if(e.key!=='Enter')return;
+  const el=e.target;
+  if(el.classList.contains('cell-input')||el.classList.contains('qty-val')){
+    e.preventDefault();
+    el.blur();
+  }
+});
+
+// ── SELL MODAL ──
+let _sellId=null;
+function openSellModal(id){
+  const s=db.sealed.find(x=>x.id===id||x.id===+id);if(!s)return;
+  _sellId=id;
+  document.getElementById('sell-name').value=s.name;
+  document.getElementById('sell-qty').value=1;
+  document.getElementById('sell-cost').value=s.price?s.price.toFixed(2):'';
+  document.getElementById('sell-price').value='';
+  document.getElementById('sell-plat').value='';
+  document.getElementById('sell-notes').value='';
+  document.getElementById('sell-date').value=today();
+  document.getElementById('sell-profit-preview').textContent='';
+  document.getElementById('sell-modal').classList.add('open');
+  // live profit preview
+  const upd=()=>{
+    const qty=parseInt(document.getElementById('sell-qty').value)||1;
+    const cost=(parseFloat(document.getElementById('sell-cost').value)||0)*qty;
+    const sold=(parseFloat(document.getElementById('sell-price').value)||0)*qty;
+    const p=sold-cost;
+    const el=document.getElementById('sell-profit-preview');
+    el.textContent=sold?`Total: cost $${cost.toFixed(2)} · sold $${sold.toFixed(2)} · profit ${p>=0?'+':''}$${p.toFixed(2)}`:'';
+    el.style.color=p>=0?'var(--green)':'var(--red)';
+  };
+  document.getElementById('sell-cost').oninput=upd;
+  document.getElementById('sell-price').oninput=upd;
+  document.getElementById('sell-qty').oninput=upd;
+  setTimeout(()=>initCB(),50);
+}
+function confirmSell(){
+  const name=document.getElementById('sell-name').value;
+  const qty=parseInt(document.getElementById('sell-qty').value)||1;
+  const costEach=parseFloat(document.getElementById('sell-cost').value)||0;
+  const soldEach=parseFloat(document.getElementById('sell-price').value)||0;
+  const cost=costEach*qty;
+  const sold=soldEach*qty;
+  const platform=document.getElementById('sell-plat').value.trim()||'Other';
+  const date=document.getElementById('sell-date').value||today();
+  const notes=document.getElementById('sell-notes').value.trim();
+  pushHist('sl-plat',platform);pushHist('sell-plat',platform);
+  db.sales.push({id:Date.now(),name:(qty>1?`${name} (x${qty})`:name),cat:'Sealed Pack',cost,sold,profit:sold-cost,platform,date,notes});
+  if(_sellId){
+    const item=db.sealed.find(x=>x.id===_sellId||x.id===+_sellId);
+    if(item){item.qty=Math.max(0,item.qty-qty);if(item.qty===0)db.sealed=db.sealed.filter(x=>x.id!==_sellId&&x.id!==+_sellId);}
+  }
+  save();renderAll();
+  closeModal('sell-modal');
+  showAlert(_sellId?'seal-alert':'pk-alert','Sale logged!');
+  _sellId=null;_ripPackId=null;
+}
+
+// ── RIP MODAL ──
+let _ripId=null;
+function openRipModal(id){
+  const p=db.sealed.find(x=>x.id===id||x.id===+id);if(!p)return;
+  _ripId=id;
+  document.getElementById('rip-set').value=p.set||p.name;
+  document.getElementById('rip-count').value=1;
+  document.getElementById('rip-price').value=p.price?p.price.toFixed(2):'';
+  document.getElementById('rip-notes').value='';
+  document.getElementById('rip-date').value=today();
+  document.getElementById('rip-modal').classList.add('open');
+  setTimeout(()=>initCB(),50);
+}
+function confirmRip(){
+  const set=document.getElementById('rip-set').value;
+  const count=parseInt(document.getElementById('rip-count').value)||1;
+  const price=parseFloat(document.getElementById('rip-price').value)||0;
+  const date=document.getElementById('rip-date').value||today();
+  const notes=document.getElementById('rip-notes').value.trim();
+  pushHist('p-notes',notes);
+  db.packs.push({id:Date.now(),set,count,price,date,notes});
+  // deduct from stash
+  const item=db.sealed.find(x=>x.id===_ripId||x.id===+_ripId);
+  if(item){item.qty=Math.max(0,item.qty-count);if(item.qty===0)db.sealed=db.sealed.filter(x=>x.id!==_ripId&&x.id!==+_ripId);}
+  save();renderAll();
+  closeModal('rip-modal');
+  showAlert('seal-alert',`Rip logged — ${count} pack${count>1?'s':''} moved to Pack Openings!`);
+}
+
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+
+// Rip button from Pack Openings → pre-fill Sell modal
+let _ripPackId=null;
+function openRipSellModal(id){
+  const p=db.packs.find(x=>x.id===id||x.id===+id);if(!p)return;
+  _ripPackId=id;_sellId=null;
+  document.getElementById('sell-name').value=p.set+' (Pack Opening)';
+  document.getElementById('sell-qty').value=1;
+  document.getElementById('sell-cost').value=p.price?(p.price*p.count).toFixed(2):'';
+  document.getElementById('sell-price').value='';
+  document.getElementById('sell-plat').value='';
+  document.getElementById('sell-notes').value=p.notes||'';
+  document.getElementById('sell-date').value=today();
+  document.getElementById('sell-profit-preview').textContent='';
+  document.getElementById('sell-modal').classList.add('open');
+  const upd=()=>{
+    const qty=parseInt(document.getElementById('sell-qty').value)||1;
+    const cost=(parseFloat(document.getElementById('sell-cost').value)||0)*qty;
+    const sold=(parseFloat(document.getElementById('sell-price').value)||0)*qty;
+    const pr=sold-cost;
+    const el=document.getElementById('sell-profit-preview');
+    el.textContent=sold?`Total: cost $${cost.toFixed(2)} · sold $${sold.toFixed(2)} · profit ${pr>=0?'+':''}$${pr.toFixed(2)}`:'';
+    el.style.color=pr>=0?'var(--green)':'var(--red)';
+  };
+  document.getElementById('sell-cost').oninput=upd;
+  document.getElementById('sell-price').oninput=upd;
+  document.getElementById('sell-qty').oninput=upd;
+  setTimeout(()=>initCB(),50);
+}
+// close on backdrop click
+document.addEventListener('click',e=>{
+  ['sell-modal','rip-modal','merge-modal'].forEach(id=>{
+    const m=document.getElementById(id);
+    if(m&&e.target===m)m.classList.remove('open');
+  });
+});
+
+// ── MERGE ──
+function getCheckedSealedIds(){
+  return [...document.querySelectorAll('.seal-check:checked')].map(c=>parseInt(c.dataset.id));
+}
+
+function updateMergeBtn(){
+  const ids=getCheckedSealedIds();
+  const btn=document.getElementById('merge-btn');
+  if(btn)btn.style.display=ids.length>=2?'inline-flex':'none';
+  // sync header checkbox state
+  const all=document.querySelectorAll('.seal-check');
+  const allChk=document.getElementById('seal-check-all');
+  if(allChk)allChk.indeterminate=ids.length>0&&ids.length<all.length;
+  if(allChk)allChk.checked=all.length>0&&ids.length===all.length;
+}
+
+function toggleAllSealedChecks(cb){
+  document.querySelectorAll('.seal-check').forEach(c=>{c.checked=cb.checked;});
+  updateMergeBtn();
+}
+
+function initMerge(){
+  const ids=getCheckedSealedIds();
+  if(ids.length<2){showAlert('seal-alert','Select at least 2 entries to merge.','error');return;}
+  const entries=ids.map(id=>db.sealed.find(s=>s.id===id||s.id===+id)).filter(Boolean);
+
+  // Calculate merged values
+  const totalQty=entries.reduce((a,s)=>a+s.qty,0);
+  const totalCost=entries.reduce((a,s)=>a+s.price*s.qty,0);
+  const avgPrice=totalQty>0?totalCost/totalQty:0;
+
+  // Detect discrepancies
+  const names=[...new Set(entries.map(s=>s.name).filter(Boolean))];
+  const types=[...new Set(entries.map(s=>s.type).filter(Boolean))];
+  const sets=[...new Set(entries.map(s=>s.set).filter(Boolean))];
+  const dates=[...new Set(entries.map(s=>s.date).filter(Boolean))];
+  const hasConflict=names.length>1||types.length>1||sets.length>1||dates.length>1;
+
+  // Pre-fill modal with best guess (most common or first)
+  document.getElementById('merge-name').value=names[0]||'';
+  document.getElementById('merge-type').value=types[0]||'';
+  document.getElementById('merge-set').value=sets[0]||'';
+  document.getElementById('merge-date').value=dates[0]||today();
+  document.getElementById('merge-count').textContent=entries.length+' items';
+  document.getElementById('merge-qty-preview').textContent=totalQty;
+  document.getElementById('merge-price-preview').textContent=fmt(avgPrice)+' each';
+  document.getElementById('merge-conflict-note').style.display=hasConflict?'block':'none';
+
+  document.getElementById('merge-modal').classList.add('open');
+  setTimeout(()=>initCB(),50);
+}
+
+function confirmMerge(){
+  const ids=getCheckedSealedIds();
+  if(ids.length<2)return;
+  const entries=ids.map(id=>db.sealed.find(s=>s.id===id||s.id===+id)).filter(Boolean);
+  const totalQty=entries.reduce((a,s)=>a+s.qty,0);
+  const totalCost=entries.reduce((a,s)=>a+s.price*s.qty,0);
+  const avgPrice=totalQty>0?(totalCost/totalQty):0;
+
+  const merged={
+    id:Date.now(),
+    name:document.getElementById('merge-name').value.trim()||entries[0].name,
+    type:document.getElementById('merge-type').value.trim()||entries[0].type,
+    set:document.getElementById('merge-set').value.trim()||entries[0].set||'',
+    date:document.getElementById('merge-date').value||today(),
+    qty:totalQty,
+    price:parseFloat(avgPrice.toFixed(4)),
+  };
+
+  // Remove originals, add merged
+  db.sealed=db.sealed.filter(s=>!ids.includes(s.id)&&!ids.includes(+s.id));
+  db.sealed.push(merged);
+  save();
+  closeModal('merge-modal');
+  renderAll();
+  showAlert('seal-alert',`Merged ${ids.length} entries into 1.`);
+}
+
+// ── GITHUB SYNC ──
+const GH_CFG_KEY='pt_gh_config';
+const GH_META_KEY='pt_gh_meta';
+
+function ghLoadConfig(){
+  try{return JSON.parse(localStorage.getItem(GH_CFG_KEY))||{};}catch(e){return{};}
+}
+function ghSaveConfig(){
+  const cfg={
+    token:document.getElementById('gh-token').value.trim(),
+    repo:document.getElementById('gh-repo').value.trim(),
+    branch:document.getElementById('gh-branch').value.trim()||'main',
+    path:document.getElementById('gh-path').value.trim()||'data/poketracker.json',
+  };
+  if(!cfg.token||!cfg.repo){showAlert('sync-config-alert','Token and repository are required.','error');return;}
+  localStorage.setItem(GH_CFG_KEY,JSON.stringify(cfg));
+  showAlert('sync-config-alert','Config saved!');
+  ghUpdateStatusUI();
+}
+
+function ghPopulateFields(){
+  const cfg=ghLoadConfig();
+  if(cfg.token)document.getElementById('gh-token').value=cfg.token;
+  if(cfg.repo)document.getElementById('gh-repo').value=cfg.repo;
+  if(cfg.branch)document.getElementById('gh-branch').value=cfg.branch;
+  if(cfg.path)document.getElementById('gh-path').value=cfg.path;
+  ghUpdateStatusUI();
+}
+
+function ghUpdateStatusUI(){
+  const cfg=ghLoadConfig();
+  const meta=JSON.parse(localStorage.getItem(GH_META_KEY)||'{}');
+  const ind=document.getElementById('sync-indicator');
+  const txt=document.getElementById('sync-status-text');
+  const sub=document.getElementById('sync-status-sub');
+  const dot=document.getElementById('sync-dot');
+  const mini=document.getElementById('sync-status-mini');
+  if(!cfg.token||!cfg.repo){
+    if(ind)ind.style.background='var(--text3)';
+    if(txt)txt.textContent='Not configured';
+    if(sub)sub.textContent='Set up your GitHub config to get started';
+    if(dot)dot.style.background='var(--text3)';
+    if(mini)mini.textContent='Not synced';
+    return;
+  }
+  const lastPush=meta.lastPush?new Date(meta.lastPush).toLocaleString():null;
+  const lastPull=meta.lastPull?new Date(meta.lastPull).toLocaleString():null;
+  if(document.getElementById('sync-last-push'))document.getElementById('sync-last-push').textContent=lastPush||'—';
+  if(document.getElementById('sync-last-pull'))document.getElementById('sync-last-pull').textContent=lastPull||'—';
+  const lastSync=meta.lastPush||meta.lastPull;
+  if(lastSync){
+    if(ind)ind.style.background='var(--green)';
+    if(txt)txt.textContent='Connected';
+    if(sub)sub.textContent=`${cfg.repo} · ${cfg.path}`;
+    if(dot)dot.style.background='var(--green)';
+    if(mini)mini.textContent='Synced';
+  } else {
+    if(ind)ind.style.background='var(--accent)';
+    if(txt)txt.textContent='Configured';
+    if(sub)sub.textContent=`${cfg.repo} · ${cfg.path}`;
+    if(dot)dot.style.background='var(--accent)';
+    if(mini)mini.textContent='Ready';
+  }
+}
+
+function ghLog(msg,color='var(--text3)'){
+  const el=document.getElementById('sync-log');
+  if(!el)return;
+  const ts=new Date().toLocaleTimeString();
+  el.innerHTML+=`<span style="color:${color}">[${ts}] ${msg}\n</span>`;
+  el.scrollTop=el.scrollHeight;
+}
+
+function ghApiBase(cfg){
+  return `https://api.github.com/repos/${cfg.repo}/contents/${cfg.path}`;
+}
+
+async function ghTestConnection(){
+  const cfg=ghLoadConfig();
+  if(!cfg.token||!cfg.repo){showAlert('sync-config-alert','Save your config first.','error');return;}
+  ghLog('Testing connection...');
+  try{
+    const r=await fetch(`https://api.github.com/repos/${cfg.repo}`,{
+      headers:{Authorization:`token ${cfg.token}`,Accept:'application/vnd.github.v3+json'}
+    });
+    if(r.ok){
+      const data=await r.json();
+      ghLog(`✓ Connected to ${data.full_name} (${data.private?'private':'public'})`, 'var(--green)');
+      showAlert('sync-config-alert',`Connected to ${data.full_name}!`);
+    } else {
+      const err=await r.json();
+      ghLog(`✗ ${r.status}: ${err.message}`,'var(--red)');
+      showAlert('sync-config-alert',`Error ${r.status}: ${err.message}`,'error');
+    }
+  }catch(e){
+    ghLog(`✗ Network error: ${e.message}`,'var(--red)');
+    showAlert('sync-config-alert','Network error — check your connection.','error');
+  }
+}
+
+async function ghPush(){
+  const cfg=ghLoadConfig();
+  if(!cfg.token||!cfg.repo){showAlert('sync-config-alert','Configure GitHub sync first.','error');return;}
+  ghLog('Pushing data to GitHub...');
+  const payload=JSON.stringify(db,null,2);
+  const encoded=btoa(unescape(encodeURIComponent(payload)));
+  try{
+    // Check if file already exists to get its SHA (required for updates)
+    let sha=null;
+    const check=await fetch(ghApiBase(cfg)+'?ref='+cfg.branch,{
+      headers:{Authorization:`token ${cfg.token}`,Accept:'application/vnd.github.v3+json'}
+    });
+    if(check.ok){const existing=await check.json();sha=existing.sha;}
+    const body={
+      message:`PokéTracker sync ${new Date().toISOString()}`,
+      content:encoded,
+      branch:cfg.branch||'main',
+    };
+    if(sha)body.sha=sha;
+    const r=await fetch(ghApiBase(cfg),{
+      method:'PUT',
+      headers:{Authorization:`token ${cfg.token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    if(r.ok){
+      const meta=JSON.parse(localStorage.getItem(GH_META_KEY)||'{}');
+      meta.lastPush=new Date().toISOString();
+      localStorage.setItem(GH_META_KEY,JSON.stringify(meta));
+      ghLog(`✓ Pushed successfully (${(payload.length/1024).toFixed(1)}KB)`,'var(--green)');
+      ghUpdateStatusUI();
+    } else {
+      const err=await r.json();
+      ghLog(`✗ Push failed ${r.status}: ${err.message}`,'var(--red)');
+    }
+  }catch(e){
+    ghLog(`✗ Error: ${e.message}`,'var(--red)');
+  }
+}
+
+async function ghPull(){
+  const cfg=ghLoadConfig();
+  if(!cfg.token||!cfg.repo){showAlert('sync-config-alert','Configure GitHub sync first.','error');return;}
+  ghLog('Pulling data from GitHub...');
+  try{
+    const r=await fetch(ghApiBase(cfg)+'?ref='+(cfg.branch||'main'),{
+      headers:{Authorization:`token ${cfg.token}`,Accept:'application/vnd.github.v3+json'}
+    });
+    if(!r.ok){
+      const err=await r.json();
+      ghLog(`✗ Pull failed ${r.status}: ${err.message}`,'var(--red)');
+      return;
+    }
+    const fileData=await r.json();
+    const decoded=decodeURIComponent(escape(atob(fileData.content.replace(/\n/g,''))));
+    const pulled=JSON.parse(decoded);
+    // Merge pulled data into db
+    if(pulled.cards)db.cards=pulled.cards;
+    if(pulled.sealed)db.sealed=pulled.sealed;
+    if(pulled.packs)db.packs=pulled.packs;
+    if(pulled.sales)db.sales=pulled.sales;
+    save();
+    renderAll();
+    const meta=JSON.parse(localStorage.getItem(GH_META_KEY)||'{}');
+    meta.lastPull=new Date().toISOString();
+    localStorage.setItem(GH_META_KEY,JSON.stringify(meta));
+    ghLog(`✓ Pulled & loaded successfully (${(decoded.length/1024).toFixed(1)}KB)`,'var(--green)');
+    ghUpdateStatusUI();
+  }catch(e){
+    ghLog(`✗ Error: ${e.message}`,'var(--red)');
+  }
+}
+
+// Populate config fields when sync page is shown
+</script>
+<!-- SELL MODAL -->
+<div class="modal-backdrop" id="sell-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>💰 Sell Sealed Item</h3>
+      <button class="modal-close" onclick="closeModal('sell-modal')">✕</button>
+    </div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group form-full"><label>Item Name</label><input id="sell-name" readonly style="opacity:0.6"></div>
+      <div class="form-group"><label>Qty to Sell</label><input id="sell-qty" type="number" min="1" value="1"></div>
+      <div class="form-group"><label>Cost Basis Each ($)</label><input id="sell-cost" type="number" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Sale Price Each ($)</label><input id="sell-price" type="number" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Platform</label><div class="cb-wrap"><input id="sell-plat" placeholder="e.g. eBay" autocomplete="off"><div class="cb-dropdown" id="cb-sell-plat"></div></div></div>
+      <div class="form-group"><label>Date Sold</label><input id="sell-date" type="date"></div>
+      <div class="form-group form-full"><label>Notes</label><input id="sell-notes" placeholder="Optional..."></div>
+    </div>
+    <div id="sell-profit-preview" style="font-family:var(--mono);font-size:13px;margin-bottom:4px"></div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('sell-modal')">Cancel</button>
+      <button class="btn btn-sell" onclick="confirmSell()">💰 Confirm Sale</button>
+    </div>
+  </div>
+</div>
+
+<!-- RIP MODAL -->
+<div class="modal-backdrop" id="rip-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>⚡ Rip Packs</h3>
+      <button class="modal-close" onclick="closeModal('rip-modal')">✕</button>
+    </div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group form-full"><label>Set</label><input id="rip-set" readonly style="opacity:0.6"></div>
+      <div class="form-group"><label>Packs to Rip</label><input id="rip-count" type="number" min="1" value="1"></div>
+      <div class="form-group"><label>Price Paid Each ($)</label><input id="rip-price" type="number" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Date</label><input id="rip-date" type="date"></div>
+      <div class="form-group form-full"><label>Notes / Notable Pulls</label><div class="cb-wrap"><input id="rip-notes" placeholder="e.g. Got Charizard ex..." autocomplete="off"><div class="cb-dropdown" id="cb-rip-notes"></div></div></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('rip-modal')">Cancel</button>
+      <button class="btn btn-rip" onclick="confirmRip()">⚡ Log Rip</button>
+    </div>
+  </div>
+</div>
+<!-- MERGE MODAL -->
+<div class="modal-backdrop" id="merge-modal">
+  <div class="modal" style="width:520px">
+    <div class="modal-header">
+      <h3>⊕ Merge Entries</h3>
+      <button class="modal-close" onclick="closeModal('merge-modal')">✕</button>
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-bottom:16px">Merging <strong id="merge-count" style="color:var(--text)"></strong> entries. Total qty: <strong id="merge-qty-preview" style="color:var(--accent)"></strong> · Avg price: <strong id="merge-price-preview" style="color:var(--accent)"></strong></p>
+    <div id="merge-conflict-note" style="background:rgba(226,75,74,0.1);border:1px solid rgba(226,75,74,0.2);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:var(--red);margin-bottom:16px;display:none">
+      Discrepancies found — please confirm the final values below.
+    </div>
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="form-group form-full"><label>Item Name</label><div class="cb-wrap"><input id="merge-name" autocomplete="off"><div class="cb-dropdown" id="cb-merge-name"></div></div></div>
+      <div class="form-group"><label>Type</label><div class="cb-wrap"><input id="merge-type" autocomplete="off"><div class="cb-dropdown" id="cb-merge-type"></div></div></div>
+      <div class="form-group"><label>Pokémon Set</label><div class="cb-wrap"><input id="merge-set" autocomplete="off"><div class="cb-dropdown" id="cb-merge-set"></div></div></div>
+      <div class="form-group"><label>Date Acquired</label><input id="merge-date" type="date"></div>
+    </div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:16px">
+      Price will be the weighted average across all selected entries. Qty will be summed.
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('merge-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmMerge()">⊕ Confirm Merge</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
