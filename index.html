@@ -70,7 +70,7 @@
   .stat-mini{font-family:var(--mono);font-size:11px;color:var(--text3);}
   .stat-mini strong{color:var(--text2);}
   .main{margin-left:220px;flex:1;}
-  .page{display:none;padding:32px;}
+  .page{display:none;padding:28px 32px;}
   .page.active{display:block;}
   .page-header{margin-bottom:28px;}
   .page-header h2{font-size:22px;font-weight:600;letter-spacing:-0.5px;}
@@ -217,6 +217,21 @@
 </nav>
 
 <div class="main">
+
+<!-- TOP NAV BAR -->
+<div id="top-nav-bar" style="position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:48px;gap:16px">
+  <div style="display:flex;align-items:center;gap:8px">
+    <span id="topnav-dot" style="width:8px;height:8px;border-radius:50%;background:var(--text3);flex-shrink:0;display:inline-block;transition:background 0.3s"></span>
+    <span id="topnav-status" style="font-size:12px;font-family:var(--mono);color:var(--text3)">Not synced</span>
+    <span id="topnav-repo" style="font-size:12px;font-family:var(--mono);color:var(--text3)"></span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span id="topnav-last" style="font-size:11px;font-family:var(--mono);color:var(--text3)"></span>
+    <button onclick="ghPush()" id="topnav-push" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(55,138,221,0.35);background:rgba(55,138,221,0.1);color:var(--blue);transition:all 0.15s" onmouseover="this.style.background='rgba(55,138,221,0.2)'" onmouseout="this.style.background='rgba(55,138,221,0.1)'">⬆ Push</button>
+    <button onclick="ghPull()" id="topnav-pull" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:6px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(93,202,151,0.35);background:rgba(93,202,151,0.1);color:var(--green);transition:all 0.15s" onmouseover="this.style.background='rgba(93,202,151,0.2)'" onmouseout="this.style.background='rgba(93,202,151,0.1)'">⬇ Pull</button>
+    <button onclick="goToSync()" style="display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:6px;font-family:var(--sans);font-size:12px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text3);transition:all 0.15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text3)'">⚙ Settings</button>
+  </div>
+</div>
 
 <!-- DASHBOARD -->
 <div id="page-dashboard" class="page active">
@@ -793,6 +808,10 @@ function showPage(id,el){
   el.classList.add('active');
   renderAll();
   if(id==='sync')ghPopulateFields();
+}
+function goToSync(){
+  const navEl=document.querySelector('.nav-item[onclick*="sync"]');
+  if(navEl)showPage('sync',navEl);
 }
 const TAB_IDS=['col-add','col-import','seal-add','seal-import','pk-add','pk-import','sal-add','sal-import'];
 function switchTab(el,targetId){
@@ -1497,6 +1516,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   ['s-date','p-date','sl-date'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=t;});
   initCB();
   renderAll();
+  ghUpdateStatusUI();
 });
 
 // ── ENTER TO SAVE on inline cell inputs ──
@@ -1743,31 +1763,53 @@ function ghUpdateStatusUI(){
   const sub=document.getElementById('sync-status-sub');
   const dot=document.getElementById('sync-dot');
   const mini=document.getElementById('sync-status-mini');
+  // top nav
+  const topDot=document.getElementById('topnav-dot');
+  const topStatus=document.getElementById('topnav-status');
+  const topRepo=document.getElementById('topnav-repo');
+  const topLast=document.getElementById('topnav-last');
+
+  const lastPush=meta.lastPush?new Date(meta.lastPush).toLocaleString():null;
+  const lastPull=meta.lastPull?new Date(meta.lastPull).toLocaleString():null;
+  if(document.getElementById('sync-last-push'))document.getElementById('sync-last-push').textContent=lastPush||'—';
+  if(document.getElementById('sync-last-pull'))document.getElementById('sync-last-pull').textContent=lastPull||'—';
+
   if(!cfg.token||!cfg.repo){
     if(ind)ind.style.background='var(--text3)';
     if(txt)txt.textContent='Not configured';
     if(sub)sub.textContent='Set up your GitHub config to get started';
     if(dot)dot.style.background='var(--text3)';
     if(mini)mini.textContent='Not synced';
+    if(topDot)topDot.style.background='var(--text3)';
+    if(topStatus)topStatus.textContent='Not configured';
+    if(topRepo)topRepo.textContent='';
+    if(topLast)topLast.textContent='';
     return;
   }
-  const lastPush=meta.lastPush?new Date(meta.lastPush).toLocaleString():null;
-  const lastPull=meta.lastPull?new Date(meta.lastPull).toLocaleString():null;
-  if(document.getElementById('sync-last-push'))document.getElementById('sync-last-push').textContent=lastPush||'—';
-  if(document.getElementById('sync-last-pull'))document.getElementById('sync-last-pull').textContent=lastPull||'—';
-  const lastSync=meta.lastPush||meta.lastPull;
-  if(lastSync){
+
+  // Format last sync time compactly for top bar
+  const lastSyncTime=meta.lastPush||meta.lastPull;
+  const lastSyncLabel=lastSyncTime?'Last sync: '+new Date(lastSyncTime).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):'';
+
+  if(topRepo)topRepo.textContent=cfg.repo;
+  if(topLast)topLast.textContent=lastSyncLabel;
+
+  if(lastSyncTime){
     if(ind)ind.style.background='var(--green)';
     if(txt)txt.textContent='Connected';
     if(sub)sub.textContent=`${cfg.repo} · ${cfg.path}`;
     if(dot)dot.style.background='var(--green)';
     if(mini)mini.textContent='Synced';
+    if(topDot)topDot.style.background='var(--green)';
+    if(topStatus)topStatus.textContent='Synced';
   } else {
     if(ind)ind.style.background='var(--accent)';
     if(txt)txt.textContent='Configured';
     if(sub)sub.textContent=`${cfg.repo} · ${cfg.path}`;
     if(dot)dot.style.background='var(--accent)';
     if(mini)mini.textContent='Ready';
+    if(topDot)topDot.style.background='var(--accent)';
+    if(topStatus)topStatus.textContent='Ready';
   }
 }
 
